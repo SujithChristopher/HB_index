@@ -1,0 +1,371 @@
+#!/usr/bin/env python3
+"""
+Bible Translations Index Generator
+
+This script scans the Holy-Bible-XML-Format directory and creates a comprehensive
+index of all Bible translations with metadata and testament coverage information.
+"""
+
+import os
+import json
+import xml.etree.ElementTree as ET
+from collections import defaultdict
+import re
+
+def extract_language_from_filename(filename):
+    """Extract language name from filename."""
+    # Remove 'Bible.xml' and any year/version suffixes
+    base_name = filename.replace('Bible.xml', '')
+    base_name = re.sub(r'\d{4}', '', base_name)  # Remove years
+    base_name = re.sub(r'[A-Z]{2,5}$', '', base_name)  # Remove version codes
+    
+    # Handle special cases
+    if base_name.startswith('English'):
+        return 'English'
+    elif base_name.startswith('Chinese'):
+        return 'Chinese'
+    elif base_name.startswith('Arabic'):
+        return 'Arabic'
+    elif base_name.startswith('Spanish'):
+        return 'Spanish'
+    elif base_name.startswith('French'):
+        return 'French'
+    elif base_name.startswith('German'):
+        return 'German'
+    elif base_name.startswith('Portuguese'):
+        return 'Portuguese'
+    elif base_name.startswith('Russian'):
+        return 'Russian'
+    elif base_name.startswith('Korean'):
+        return 'Korean'
+    elif base_name.startswith('Japanese'):
+        return 'Japanese'
+    elif base_name.startswith('Hindi'):
+        return 'Hindi'
+    elif base_name.startswith('Tamil'):
+        return 'Tamil'
+    elif base_name.startswith('Telugu'):
+        return 'Telugu'
+    elif base_name.startswith('Bengali'):
+        return 'Bengali'
+    elif base_name.startswith('Gujarati'):
+        return 'Gujarati'
+    elif base_name.startswith('Marathi'):
+        return 'Marathi'
+    elif base_name.startswith('Malayalam'):
+        return 'Malayalam'
+    elif base_name.startswith('Kannada'):
+        return 'Kannada'
+    elif base_name.startswith('Punjabi'):
+        return 'Punjabi'
+    elif base_name.startswith('Urdu'):
+        return 'Urdu'
+    elif base_name.startswith('Persian'):
+        return 'Persian'
+    elif base_name.startswith('Turkish'):
+        return 'Turkish'
+    elif base_name.startswith('Hebrew'):
+        return 'Hebrew'
+    elif base_name.startswith('Greek'):
+        return 'Greek'
+    elif base_name.startswith('Latin'):
+        return 'Latin'
+    elif base_name.startswith('Italian'):
+        return 'Italian'
+    elif base_name.startswith('Dutch'):
+        return 'Dutch'
+    elif base_name.startswith('Swedish'):
+        return 'Swedish'
+    elif base_name.startswith('Norwegian'):
+        return 'Norwegian'
+    elif base_name.startswith('Danish'):
+        return 'Danish'
+    elif base_name.startswith('Finnish'):
+        return 'Finnish'
+    elif base_name.startswith('Polish'):
+        return 'Polish'
+    elif base_name.startswith('Czech'):
+        return 'Czech'
+    elif base_name.startswith('Slovak'):
+        return 'Slovak'
+    elif base_name.startswith('Hungarian'):
+        return 'Hungarian'
+    elif base_name.startswith('Romanian'):
+        return 'Romanian'
+    elif base_name.startswith('Bulgarian'):
+        return 'Bulgarian'
+    elif base_name.startswith('Serbian'):
+        return 'Serbian'
+    elif base_name.startswith('Croatian'):
+        return 'Croatian'
+    elif base_name.startswith('Slovenian'):
+        return 'Slovenian'
+    elif base_name.startswith('Albanian'):
+        return 'Albanian'
+    elif base_name.startswith('Estonian'):
+        return 'Estonian'
+    elif base_name.startswith('Latvian'):
+        return 'Latvian'
+    elif base_name.startswith('Lithuanian'):
+        return 'Lithuanian'
+    elif base_name.startswith('Ukrainian'):
+        return 'Ukrainian'
+    elif base_name.startswith('Belarusian'):
+        return 'Belarusian'
+    else:
+        # Default to the base name
+        return base_name
+
+def get_language_info(language):
+    """Get native name and ISO code for a language."""
+    language_map = {
+        'English': {'native': 'English', 'iso': 'en'},
+        'Chinese': {'native': '中文', 'iso': 'zh'},
+        'Arabic': {'native': 'العربية', 'iso': 'ar'},
+        'Spanish': {'native': 'Español', 'iso': 'es'},
+        'French': {'native': 'Français', 'iso': 'fr'},
+        'German': {'native': 'Deutsch', 'iso': 'de'},
+        'Portuguese': {'native': 'Português', 'iso': 'pt'},
+        'Russian': {'native': 'Русский', 'iso': 'ru'},
+        'Korean': {'native': '한국어', 'iso': 'ko'},
+        'Japanese': {'native': '日本語', 'iso': 'ja'},
+        'Hindi': {'native': 'हिन्दी', 'iso': 'hi'},
+        'Tamil': {'native': 'தமிழ்', 'iso': 'ta'},
+        'Telugu': {'native': 'తెలుగు', 'iso': 'te'},
+        'Bengali': {'native': 'বাংলা', 'iso': 'bn'},
+        'Gujarati': {'native': 'ગુજરાતી', 'iso': 'gu'},
+        'Marathi': {'native': 'मराठी', 'iso': 'mr'},
+        'Malayalam': {'native': 'മലയാളം', 'iso': 'ml'},
+        'Kannada': {'native': 'ಕನ್ನಡ', 'iso': 'kn'},
+        'Punjabi': {'native': 'ਪੰਜਾਬੀ', 'iso': 'pa'},
+        'Urdu': {'native': 'اردو', 'iso': 'ur'},
+        'Persian': {'native': 'فارسی', 'iso': 'fa'},
+        'Turkish': {'native': 'Türkçe', 'iso': 'tr'},
+        'Hebrew': {'native': 'עברית', 'iso': 'he'},
+        'Greek': {'native': 'Ελληνικά', 'iso': 'el'},
+        'Latin': {'native': 'Latina', 'iso': 'la'},
+        'Italian': {'native': 'Italiano', 'iso': 'it'},
+        'Dutch': {'native': 'Nederlands', 'iso': 'nl'},
+        'Swedish': {'native': 'Svenska', 'iso': 'sv'},
+        'Norwegian': {'native': 'Norsk', 'iso': 'no'},
+        'Danish': {'native': 'Dansk', 'iso': 'da'},
+        'Finnish': {'native': 'Suomi', 'iso': 'fi'},
+        'Polish': {'native': 'Polski', 'iso': 'pl'},
+        'Czech': {'native': 'Čeština', 'iso': 'cs'},
+        'Slovak': {'native': 'Slovenčina', 'iso': 'sk'},
+        'Hungarian': {'native': 'Magyar', 'iso': 'hu'},
+        'Romanian': {'native': 'Română', 'iso': 'ro'},
+        'Bulgarian': {'native': 'Български', 'iso': 'bg'},
+        'Serbian': {'native': 'Српски', 'iso': 'sr'},
+        'Croatian': {'native': 'Hrvatski', 'iso': 'hr'},
+        'Slovenian': {'native': 'Slovenščina', 'iso': 'sl'},
+        'Albanian': {'native': 'Shqip', 'iso': 'sq'},
+        'Estonian': {'native': 'Eesti', 'iso': 'et'},
+        'Latvian': {'native': 'Latviešu', 'iso': 'lv'},
+        'Lithuanian': {'native': 'Lietuvių', 'iso': 'lt'},
+        'Ukrainian': {'native': 'Українська', 'iso': 'uk'},
+        'Belarusian': {'native': 'Беларуская', 'iso': 'be'},
+    }
+    
+    return language_map.get(language, {'native': language, 'iso': None})
+
+def generate_translation_id(filename):
+    """Generate a unique ID from filename."""
+    # Remove 'Bible.xml' and convert to lowercase kebab-case
+    base_name = filename.replace('Bible.xml', '').lower()
+    # Replace numbers and uppercase patterns with hyphens
+    base_name = re.sub(r'([a-z])([A-Z0-9])', r'\1-\2', base_name).lower()
+    # Clean up multiple hyphens
+    base_name = re.sub(r'-+', '-', base_name).strip('-')
+    return base_name
+
+def parse_bible_file(filepath):
+    """Parse a Bible XML file and extract metadata."""
+    try:
+        tree = ET.parse(filepath)
+        root = tree.getroot()
+        
+        # Extract metadata from root bible element
+        translation_name = root.get('translation', '')
+        status = root.get('status', '')
+        info = root.get('info', '')
+        site = root.get('site', '')
+        link = root.get('link', '')
+        
+        # Check testament coverage
+        testaments = root.findall('testament')
+        has_old_testament = any(t.get('name') == 'Old' for t in testaments)
+        has_new_testament = any(t.get('name') == 'New' for t in testaments)
+        
+        # Count total books
+        total_books = 0
+        for testament in testaments:
+            books = testament.findall('book')
+            total_books += len(books)
+        
+        return {
+            'translation_name': translation_name,
+            'has_old_testament': has_old_testament,
+            'has_new_testament': has_new_testament,
+            'total_books': total_books,
+            'status': status,
+            'info': info,
+            'site': site,
+            'link': link
+        }
+    except ET.ParseError as e:
+        print(f"Warning: Could not parse {filepath}: {e}")
+        return None
+    except Exception as e:
+        print(f"Warning: Error processing {filepath}: {e}")
+        return None
+
+def generate_bible_index(bible_dir):
+    """Generate the complete Bible translations index."""
+    if not os.path.exists(bible_dir):
+        raise FileNotFoundError(f"Bible directory not found: {bible_dir}")
+    
+    # Group translations by language
+    languages_data = defaultdict(list)
+    
+    # Scan all XML files
+    xml_files = [f for f in os.listdir(bible_dir) if f.endswith('Bible.xml')]
+    print(f"Found {len(xml_files)} Bible translation files")
+    
+    processed_count = 0
+    for filename in xml_files:
+        filepath = os.path.join(bible_dir, filename)
+        
+        # Extract language from filename
+        language = extract_language_from_filename(filename)
+        
+        # Parse the XML file and get file size
+        bible_data = parse_bible_file(filepath)
+        if bible_data is None:
+            continue
+        
+        # Get file size in bytes
+        file_size = os.path.getsize(filepath)
+        
+        # Create translation entry
+        translation_entry = {
+            'id': generate_translation_id(filename),
+            'name': bible_data['translation_name'] or filename.replace('Bible.xml', ''),
+            'filename': filename,
+            'download_url': f'https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/{filename}',
+            'file_size_bytes': file_size,
+            'testament_coverage': {
+                'old_testament': bible_data['has_old_testament'],
+                'new_testament': bible_data['has_new_testament'],
+                'total_books': bible_data['total_books']
+            },
+            'metadata': {
+                'status': bible_data['status'],
+                'year': None,  # Could be extracted from info or status if needed
+                'info': bible_data['info'],
+                'site': bible_data['site'],
+                'link': bible_data['link']
+            }
+        }
+        
+        languages_data[language].append(translation_entry)
+        processed_count += 1
+        
+        if processed_count % 50 == 0:
+            print(f"Processed {processed_count} files...")
+    
+    print(f"Successfully processed {processed_count} files")
+    
+    # Build final structure
+    languages_list = []
+    total_translations = 0
+    complete_bibles = 0
+    new_testament_only = 0
+    old_testament_only = 0
+    total_size_bytes = 0
+    
+    for language, translations in sorted(languages_data.items()):
+        language_info = get_language_info(language)
+        
+        # Sort translations by name
+        translations.sort(key=lambda x: x['name'])
+        
+        # Count statistics for this language
+        for trans in translations:
+            total_translations += 1
+            total_size_bytes += trans['file_size_bytes']
+            coverage = trans['testament_coverage']
+            if coverage['old_testament'] and coverage['new_testament']:
+                complete_bibles += 1
+            elif coverage['new_testament'] and not coverage['old_testament']:
+                new_testament_only += 1
+            elif coverage['old_testament'] and not coverage['new_testament']:
+                old_testament_only += 1
+        
+        languages_list.append({
+            'language': language,
+            'native_name': language_info['native'],
+            'iso_code': language_info['iso'],
+            'translations': translations
+        })
+    
+    # Create final index structure
+    index = {
+        'languages': languages_list,
+        'summary': {
+            'total_languages': len(languages_list),
+            'total_translations': total_translations,
+            'complete_bibles': complete_bibles,
+            'new_testament_only': new_testament_only,
+            'old_testament_only': old_testament_only,
+            'total_size_bytes': total_size_bytes
+        }
+    }
+    
+    return index
+
+def main():
+    """Main function to generate the Bible translations index."""
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    bible_dir = os.path.join(script_dir, 'Holy-Bible-XML-Format')
+    output_file = os.path.join(script_dir, 'bible-translations-index.json')
+    
+    print("Bible Translations Index Generator")
+    print("=" * 40)
+    print(f"Scanning directory: {bible_dir}")
+    
+    try:
+        # Generate the index
+        index = generate_bible_index(bible_dir)
+        
+        # Write to JSON file
+        with open(output_file, 'w', encoding='utf-8') as f:
+            json.dump(index, f, ensure_ascii=False, indent=2)
+        
+        # Helper function to format file size
+        def format_size(size_bytes):
+            if size_bytes >= 1024**3:
+                return f"{size_bytes / (1024**3):.1f} GB"
+            elif size_bytes >= 1024**2:
+                return f"{size_bytes / (1024**2):.1f} MB"
+            elif size_bytes >= 1024:
+                return f"{size_bytes / 1024:.1f} KB"
+            else:
+                return f"{size_bytes} bytes"
+        
+        print(f"\nIndex generated successfully!")
+        print(f"Output file: {output_file}")
+        print(f"\nSummary:")
+        print(f"- Total languages: {index['summary']['total_languages']}")
+        print(f"- Total translations: {index['summary']['total_translations']}")
+        print(f"- Complete Bibles: {index['summary']['complete_bibles']}")
+        print(f"- New Testament only: {index['summary']['new_testament_only']}")
+        print(f"- Old Testament only: {index['summary']['old_testament_only']}")
+        print(f"- Total size: {format_size(index['summary']['total_size_bytes'])}")
+        
+    except Exception as e:
+        print(f"Error generating index: {e}")
+        raise
+
+if __name__ == '__main__':
+    main()
