@@ -83,3 +83,4 @@ tmp/
 !bible-translations-index.json
 !CLAUDE.md
 !*.py
+.claude
