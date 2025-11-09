@@ -12,6 +12,37 @@ import xml.etree.ElementTree as ET
 from collections import defaultdict
 import re
 
+def normalize_language_name(base_name):
+    """Normalize language name to group related languages."""
+    # List of base languages to check against
+    base_languages = [
+        'English', 'Chinese', 'Arabic', 'Spanish', 'French', 'German', 'Portuguese',
+        'Russian', 'Korean', 'Japanese', 'Hindi', 'Tamil', 'Telugu', 'Bengali',
+        'Gujarati', 'Marathi', 'Malayalam', 'Kannada', 'Punjabi', 'Urdu', 'Persian',
+        'Turkish', 'Hebrew', 'Greek', 'Latin', 'Italian', 'Dutch', 'Swedish',
+        'Norwegian', 'Danish', 'Finnish', 'Polish', 'Czech', 'Slovak', 'Hungarian',
+        'Romanian', 'Bulgarian', 'Serbian', 'Croatian', 'Slovenian', 'Albanian',
+        'Estonian', 'Latvian', 'Lithuanian', 'Ukrainian', 'Belarusian', 'Amharic',
+        'Azerbaijan', 'Balochi', 'Chin', 'Fulfulde', 'Kurdish', 'Oromo', 'Romani',
+        'Swahili', 'Twi', 'Armenian', 'Greek', 'Dinka', 'Indonesian', 'Kamba',
+        'Karakalpak', 'Macedonian', 'Makonde'
+    ]
+    
+    # Handle special cases and variations
+    if base_name.startswith('Chin'):
+        return 'Chin'
+    if base_name.startswith('Original'):
+        if 'Greek' in base_name:
+            return 'Greek'
+        if 'Hebrew' in base_name:
+            return 'Hebrew'
+
+    for lang in base_languages:
+        if base_name.startswith(lang):
+            return lang
+            
+    return base_name
+
 def extract_language_from_filename(filename):
     """Extract language name from filename."""
     # Remove 'Bible.xml' and any year/version suffixes
@@ -19,102 +50,8 @@ def extract_language_from_filename(filename):
     base_name = re.sub(r'\d{4}', '', base_name)  # Remove years
     base_name = re.sub(r'[A-Z]{2,5}$', '', base_name)  # Remove version codes
     
-    # Handle special cases
-    if base_name.startswith('English'):
-        return 'English'
-    elif base_name.startswith('Chinese'):
-        return 'Chinese'
-    elif base_name.startswith('Arabic'):
-        return 'Arabic'
-    elif base_name.startswith('Spanish'):
-        return 'Spanish'
-    elif base_name.startswith('French'):
-        return 'French'
-    elif base_name.startswith('German'):
-        return 'German'
-    elif base_name.startswith('Portuguese'):
-        return 'Portuguese'
-    elif base_name.startswith('Russian'):
-        return 'Russian'
-    elif base_name.startswith('Korean'):
-        return 'Korean'
-    elif base_name.startswith('Japanese'):
-        return 'Japanese'
-    elif base_name.startswith('Hindi'):
-        return 'Hindi'
-    elif base_name.startswith('Tamil'):
-        return 'Tamil'
-    elif base_name.startswith('Telugu'):
-        return 'Telugu'
-    elif base_name.startswith('Bengali'):
-        return 'Bengali'
-    elif base_name.startswith('Gujarati'):
-        return 'Gujarati'
-    elif base_name.startswith('Marathi'):
-        return 'Marathi'
-    elif base_name.startswith('Malayalam'):
-        return 'Malayalam'
-    elif base_name.startswith('Kannada'):
-        return 'Kannada'
-    elif base_name.startswith('Punjabi'):
-        return 'Punjabi'
-    elif base_name.startswith('Urdu'):
-        return 'Urdu'
-    elif base_name.startswith('Persian'):
-        return 'Persian'
-    elif base_name.startswith('Turkish'):
-        return 'Turkish'
-    elif base_name.startswith('Hebrew'):
-        return 'Hebrew'
-    elif base_name.startswith('Greek'):
-        return 'Greek'
-    elif base_name.startswith('Latin'):
-        return 'Latin'
-    elif base_name.startswith('Italian'):
-        return 'Italian'
-    elif base_name.startswith('Dutch'):
-        return 'Dutch'
-    elif base_name.startswith('Swedish'):
-        return 'Swedish'
-    elif base_name.startswith('Norwegian'):
-        return 'Norwegian'
-    elif base_name.startswith('Danish'):
-        return 'Danish'
-    elif base_name.startswith('Finnish'):
-        return 'Finnish'
-    elif base_name.startswith('Polish'):
-        return 'Polish'
-    elif base_name.startswith('Czech'):
-        return 'Czech'
-    elif base_name.startswith('Slovak'):
-        return 'Slovak'
-    elif base_name.startswith('Hungarian'):
-        return 'Hungarian'
-    elif base_name.startswith('Romanian'):
-        return 'Romanian'
-    elif base_name.startswith('Bulgarian'):
-        return 'Bulgarian'
-    elif base_name.startswith('Serbian'):
-        return 'Serbian'
-    elif base_name.startswith('Croatian'):
-        return 'Croatian'
-    elif base_name.startswith('Slovenian'):
-        return 'Slovenian'
-    elif base_name.startswith('Albanian'):
-        return 'Albanian'
-    elif base_name.startswith('Estonian'):
-        return 'Estonian'
-    elif base_name.startswith('Latvian'):
-        return 'Latvian'
-    elif base_name.startswith('Lithuanian'):
-        return 'Lithuanian'
-    elif base_name.startswith('Ukrainian'):
-        return 'Ukrainian'
-    elif base_name.startswith('Belarusian'):
-        return 'Belarusian'
-    else:
-        # Default to the base name
-        return base_name
+    # Normalize the language name
+    return normalize_language_name(base_name)
 
 def get_language_info(language):
     """Get native name and ISO code for a language."""

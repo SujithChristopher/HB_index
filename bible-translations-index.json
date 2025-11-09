@@ -326,6 +326,25 @@
       "iso_code": null,
       "translations": [
         {
+          "id": "amharictigrinya-2024",
+          "name": "Amharic (Tigrigna: Contemporary Tigrinya Bible 2024)",
+          "filename": "AmharicTigrinya2024Bible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/AmharicTigrinya2024Bible.xml",
+          "file_size_bytes": 6804860,
+          "testament_coverage": {
+            "old_testament": true,
+            "new_testament": true,
+            "total_books": 66
+          },
+          "metadata": {
+            "status": "Contemporary Tigrinya Bible Copyright © 2024, by City Bible Foundation ® Used with permission of City Bible Foundation ®. All rights reserved worldwide",
+            "year": null,
+            "info": "",
+            "site": "",
+            "link": "https://www.bible.com/bible/3988/DAN.9_1.TIG24"
+          }
+        },
+        {
           "id": "amharic-2000",
           "name": "Amharic 2000 (የአማርኛ መጽሐፍ ቅዱስ (ሰማንያ አሃዱ))",
           "filename": "Amharic2000Bible.xml",
@@ -364,51 +383,6 @@
           }
         },
         {
-          "id": "amharicnasv",
-          "name": "Amharic NASV (አዲሱ መደበኛ ትርጒም)",
-          "filename": "AmharicNASVBible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/AmharicNASVBible.xml",
-          "file_size_bytes": 7160993,
-          "testament_coverage": {
-            "old_testament": true,
-            "new_testament": true,
-            "total_books": 66
-          },
-          "metadata": {
-            "status": "መጽሐፍ ቅዱስ፣ አዲሱ መደበኛ ትርጕም™ የቅጅ መብት © 2001 በ Biblica, Inc. ፈቃድ የተገኘባቸው ናቸው። መብቱ በመላው ዓለም በሕግ የተጠበቀ። Holy Bible, New Amharic Standard Version™ (Addisu Medebegna Tirgum™) Copyright © 2001 by Biblica, Inc. Used with permission. All rights reserved worldwide.",
-            "year": null,
-            "info": "",
-            "site": "",
-            "link": "https://www.bible.com/bible/1260/COL.3.NASV"
-          }
-        },
-        {
-          "id": "amharicnst",
-          "name": "Amharic New Standard Translation (አማርኛ አዲሱ መደበኛ ትርጉም) 2005",
-          "filename": "AmharicNSTBible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/AmharicNSTBible.xml",
-          "file_size_bytes": 7666099,
-          "testament_coverage": {
-            "old_testament": true,
-            "new_testament": true,
-            "total_books": 66
-          },
-          "metadata": {
-            "status": "© The Bible Society of Ethiopia, 2005 © የኢትዮጵያ መጽሐፍ ቅዱስ ማኅበር፥ 1997",
-            "year": null,
-            "info": "",
-            "site": "",
-            "link": "https://www.bible.com/bible/3198/GEN.12.አማ05"
-          }
-        }
-      ]
-    },
-    {
-      "language": "AmharicCatholic",
-      "native_name": "AmharicCatholic",
-      "iso_code": null,
-      "translations": [
-        {
           "id": "amhariccatholic",
           "name": "Amharic Catholic Version (መጽሐፍ ቅዱስ - (ካቶሊካዊ እትም - ኤማሁስ)) No Year",
           "filename": "AmharicCatholicBible.xml",
@@ -426,14 +400,7 @@
             "site": "",
             "link": "https://www.bible.com/bible/3199/GEN.18.መቅካእኤ"
           }
-        }
-      ]
-    },
-    {
-      "language": "AmharicDawro",
-      "native_name": "AmharicDawro",
-      "iso_code": null,
-      "translations": [
+        },
         {
           "id": "amharicdawro",
           "name": "Amharic Dawro (Ooratha Caaquwaa)",
@@ -473,6 +440,25 @@
           }
         },
         {
+          "id": "amharicdawrodfblvl",
+          "name": "Amharic Dawro DFBLVL (Geeshsha Mas'aafaa)",
+          "filename": "AmharicDawroDFBLVLBible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/AmharicDawroDFBLVLBible.xml",
+          "file_size_bytes": 5663398,
+          "testament_coverage": {
+            "old_testament": true,
+            "new_testament": true,
+            "total_books": 66
+          },
+          "metadata": {
+            "status": "The word for the world Ethiopia",
+            "year": null,
+            "info": "",
+            "site": "",
+            "link": "https://www.bible.com/bible/4074/MAT.9.DFBLVL"
+          }
+        },
+        {
           "id": "amharicdawrodwrnt",
           "name": "Amharic Dawro DWRNT (Ooratha Caaquwaa)",
           "filename": "AmharicDawroDWRNTBible.xml",
@@ -509,40 +495,7 @@
             "site": "",
             "link": "https://www.bible.com/bible/1672/MAT.6.DWNT"
           }
-        }
-      ]
-    },
-    {
-      "language": "AmharicDawroD",
-      "native_name": "AmharicDawroD",
-      "iso_code": null,
-      "translations": [
-        {
-          "id": "amharicdawrodfblvl",
-          "name": "Amharic Dawro DFBLVL (Geeshsha Mas'aafaa)",
-          "filename": "AmharicDawroDFBLVLBible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/AmharicDawroDFBLVLBible.xml",
-          "file_size_bytes": 5663398,
-          "testament_coverage": {
-            "old_testament": true,
-            "new_testament": true,
-            "total_books": 66
-          },
-          "metadata": {
-            "status": "The word for the world Ethiopia",
-            "year": null,
-            "info": "",
-            "site": "",
-            "link": "https://www.bible.com/bible/4074/MAT.9.DFBLVL"
-          }
-        }
-      ]
-    },
-    {
-      "language": "AmharicGamo",
-      "native_name": "AmharicGamo",
-      "iso_code": null,
-      "translations": [
+        },
         {
           "id": "amharicgamogm",
           "name": "Amharic Gamo (Geeshsha Maxaafa)",
@@ -560,6 +513,25 @@
             "info": "",
             "site": "",
             "link": "https://www.bible.com/bible/4038/MAT.2.GM"
+          }
+        },
+        {
+          "id": "amharicgamoword",
+          "name": "Amharic Gamo (ጋሞ ማጻፋ)",
+          "filename": "AmharicGamoWordBible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/AmharicGamoWordBible.xml",
+          "file_size_bytes": 6575038,
+          "testament_coverage": {
+            "old_testament": true,
+            "new_testament": true,
+            "total_books": 66
+          },
+          "metadata": {
+            "status": "The Word for the World International amp The Word for the World Ethiopia",
+            "year": null,
+            "info": "",
+            "site": "",
+            "link": "https://www.bible.com/bible/4041/MAT.7.%25E1%258C%258B%25E1%2588%259E%25E1%2588%2598%25E1%258C%25BD%25E1%2589%2585%25E1%2589%25A0%25E1%258D%258A%25E1%258B%25B0%25E1%2588%258D"
           }
         },
         {
@@ -599,40 +571,7 @@
             "site": "",
             "link": "https://www.bible.com/bible/434/REV.21.GGMNT"
           }
-        }
-      ]
-    },
-    {
-      "language": "AmharicGamoWord",
-      "native_name": "AmharicGamoWord",
-      "iso_code": null,
-      "translations": [
-        {
-          "id": "amharicgamoword",
-          "name": "Amharic Gamo (ጋሞ ማጻፋ)",
-          "filename": "AmharicGamoWordBible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/AmharicGamoWordBible.xml",
-          "file_size_bytes": 6575038,
-          "testament_coverage": {
-            "old_testament": true,
-            "new_testament": true,
-            "total_books": 66
-          },
-          "metadata": {
-            "status": "The Word for the World International amp The Word for the World Ethiopia",
-            "year": null,
-            "info": "",
-            "site": "",
-            "link": "https://www.bible.com/bible/4041/MAT.7.%25E1%258C%258B%25E1%2588%259E%25E1%2588%2598%25E1%258C%25BD%25E1%2589%2585%25E1%2589%25A0%25E1%258D%258A%25E1%258B%25B0%25E1%2588%258D"
-          }
-        }
-      ]
-    },
-    {
-      "language": "AmharicGofa",
-      "native_name": "AmharicGofa",
-      "iso_code": null,
-      "translations": [
+        },
         {
           "id": "amharicgofawwi",
           "name": "Amharic Gofa 2011 (The Word For The World International) (Gofa New Testament)",
@@ -672,32 +611,6 @@
           }
         },
         {
-          "id": "amharicgofarnt",
-          "name": "Amharic Gofa RNT 2011 (Ooratha Caaquwa Goofatho)",
-          "filename": "AmharicGofaRNTBible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/AmharicGofaRNTBible.xml",
-          "file_size_bytes": 1196898,
-          "testament_coverage": {
-            "old_testament": false,
-            "new_testament": true,
-            "total_books": 27
-          },
-          "metadata": {
-            "status": "© 2011, Wycliffe Bible Translators, Inc. All rights reserved.",
-            "year": null,
-            "info": "",
-            "site": "",
-            "link": "https://www.bible.com/bible/435/MAT.27.GOFRNT"
-          }
-        }
-      ]
-    },
-    {
-      "language": "AmharicGofaG",
-      "native_name": "AmharicGofaG",
-      "iso_code": null,
-      "translations": [
-        {
           "id": "amharicgofagfbevf",
           "name": "Amharic Gofa GFBEVF (ጌሻ ማፃፋ)",
           "filename": "AmharicGofaGFBEVFBible.xml",
@@ -734,31 +647,81 @@
             "site": "",
             "link": "https://www.bible.com/bible/4045/GEN.1.GFBLVF"
           }
-        }
-      ]
-    },
-    {
-      "language": "AmharicTigrinya",
-      "native_name": "AmharicTigrinya",
-      "iso_code": null,
-      "translations": [
+        },
         {
-          "id": "amharictigrinya-2024",
-          "name": "Amharic (Tigrigna: Contemporary Tigrinya Bible 2024)",
-          "filename": "AmharicTigrinya2024Bible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/AmharicTigrinya2024Bible.xml",
-          "file_size_bytes": 6804860,
+          "id": "amharicgofarnt",
+          "name": "Amharic Gofa RNT 2011 (Ooratha Caaquwa Goofatho)",
+          "filename": "AmharicGofaRNTBible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/AmharicGofaRNTBible.xml",
+          "file_size_bytes": 1196898,
+          "testament_coverage": {
+            "old_testament": false,
+            "new_testament": true,
+            "total_books": 27
+          },
+          "metadata": {
+            "status": "© 2011, Wycliffe Bible Translators, Inc. All rights reserved.",
+            "year": null,
+            "info": "",
+            "site": "",
+            "link": "https://www.bible.com/bible/435/MAT.27.GOFRNT"
+          }
+        },
+        {
+          "id": "amharicnasv",
+          "name": "Amharic NASV (አዲሱ መደበኛ ትርጒም)",
+          "filename": "AmharicNASVBible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/AmharicNASVBible.xml",
+          "file_size_bytes": 7160993,
           "testament_coverage": {
             "old_testament": true,
             "new_testament": true,
             "total_books": 66
           },
           "metadata": {
-            "status": "Contemporary Tigrinya Bible Copyright © 2024, by City Bible Foundation ® Used with permission of City Bible Foundation ®. All rights reserved worldwide",
+            "status": "መጽሐፍ ቅዱስ፣ አዲሱ መደበኛ ትርጕም™ የቅጅ መብት © 2001 በ Biblica, Inc. ፈቃድ የተገኘባቸው ናቸው። መብቱ በመላው ዓለም በሕግ የተጠበቀ። Holy Bible, New Amharic Standard Version™ (Addisu Medebegna Tirgum™) Copyright © 2001 by Biblica, Inc. Used with permission. All rights reserved worldwide.",
             "year": null,
             "info": "",
             "site": "",
-            "link": "https://www.bible.com/bible/3988/DAN.9_1.TIG24"
+            "link": "https://www.bible.com/bible/1260/COL.3.NASV"
+          }
+        },
+        {
+          "id": "amharicnst",
+          "name": "Amharic New Standard Translation (አማርኛ አዲሱ መደበኛ ትርጉም) 2005",
+          "filename": "AmharicNSTBible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/AmharicNSTBible.xml",
+          "file_size_bytes": 7666099,
+          "testament_coverage": {
+            "old_testament": true,
+            "new_testament": true,
+            "total_books": 66
+          },
+          "metadata": {
+            "status": "© The Bible Society of Ethiopia, 2005 © የኢትዮጵያ መጽሐፍ ቅዱስ ማኅበር፥ 1997",
+            "year": null,
+            "info": "",
+            "site": "",
+            "link": "https://www.bible.com/bible/3198/GEN.12.አማ05"
+          }
+        },
+        {
+          "id": "amharictigrinya-15",
+          "name": "Amharic Tigrinya (መፅሓፍ ቅዱስ) No Year",
+          "filename": "AmharicTigrinya15Bible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/AmharicTigrinya15Bible.xml",
+          "file_size_bytes": 7241236,
+          "testament_coverage": {
+            "old_testament": true,
+            "new_testament": true,
+            "total_books": 66
+          },
+          "metadata": {
+            "status": "Bible Society of Ethiopia",
+            "year": null,
+            "info": "",
+            "site": "",
+            "link": "https://www.bible.com/bible/2998/EXO.6.ትመ15"
           }
         },
         {
@@ -778,32 +741,6 @@
             "info": "Copyright No Info",
             "site": "",
             "link": "Cant Find"
-          }
-        }
-      ]
-    },
-    {
-      "language": "AmharicTigrinya15",
-      "native_name": "AmharicTigrinya15",
-      "iso_code": null,
-      "translations": [
-        {
-          "id": "amharictigrinya-15",
-          "name": "Amharic Tigrinya (መፅሓፍ ቅዱስ) No Year",
-          "filename": "AmharicTigrinya15Bible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/AmharicTigrinya15Bible.xml",
-          "file_size_bytes": 7241236,
-          "testament_coverage": {
-            "old_testament": true,
-            "new_testament": true,
-            "total_books": 66
-          },
-          "metadata": {
-            "status": "Bible Society of Ethiopia",
-            "year": null,
-            "info": "",
-            "site": "",
-            "link": "https://www.bible.com/bible/2998/EXO.6.ትመ15"
           }
         }
       ]
@@ -1265,6 +1202,44 @@
       "iso_code": null,
       "translations": [
         {
+          "id": "armenianararat",
+          "name": "Armenian Ararat 1896 (Արարատ Թարգմանություն)",
+          "filename": "ArmenianAraratBible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/ArmenianAraratBible.xml",
+          "file_size_bytes": 7472135,
+          "testament_coverage": {
+            "old_testament": true,
+            "new_testament": true,
+            "total_books": 66
+          },
+          "metadata": {
+            "status": "",
+            "year": null,
+            "info": "Public Domain",
+            "site": "",
+            "link": "https://www.derekprincearmenia.com/onlinebible/45/5/11/"
+          }
+        },
+        {
+          "id": "armenianeastern",
+          "name": "Armenian Eastern Bible 1994",
+          "filename": "ArmenianEasternBible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/ArmenianEasternBible.xml",
+          "file_size_bytes": 6475356,
+          "testament_coverage": {
+            "old_testament": true,
+            "new_testament": true,
+            "total_books": 66
+          },
+          "metadata": {
+            "status": "",
+            "year": null,
+            "info": "© Mother See of Holy Etchmiadzin and Armenian Bible Church, 1994",
+            "site": "",
+            "link": "https://azbyka.ru/biblia/?Rom.1amp;am"
+          }
+        },
+        {
           "id": "armenian",
           "name": "Armenian Western NT 1994?",
           "filename": "ArmenianBible.xml",
@@ -1376,58 +1351,6 @@
             "info": "",
             "site": "",
             "link": "https://www.bible.com/bible/2860/2MA.13.ՆԷԱ"
-          }
-        }
-      ]
-    },
-    {
-      "language": "ArmenianArarat",
-      "native_name": "ArmenianArarat",
-      "iso_code": null,
-      "translations": [
-        {
-          "id": "armenianararat",
-          "name": "Armenian Ararat 1896 (Արարատ Թարգմանություն)",
-          "filename": "ArmenianAraratBible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/ArmenianAraratBible.xml",
-          "file_size_bytes": 7472135,
-          "testament_coverage": {
-            "old_testament": true,
-            "new_testament": true,
-            "total_books": 66
-          },
-          "metadata": {
-            "status": "",
-            "year": null,
-            "info": "Public Domain",
-            "site": "",
-            "link": "https://www.derekprincearmenia.com/onlinebible/45/5/11/"
-          }
-        }
-      ]
-    },
-    {
-      "language": "ArmenianEastern",
-      "native_name": "ArmenianEastern",
-      "iso_code": null,
-      "translations": [
-        {
-          "id": "armenianeastern",
-          "name": "Armenian Eastern Bible 1994",
-          "filename": "ArmenianEasternBible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/ArmenianEasternBible.xml",
-          "file_size_bytes": 6475356,
-          "testament_coverage": {
-            "old_testament": true,
-            "new_testament": true,
-            "total_books": 66
-          },
-          "metadata": {
-            "status": "",
-            "year": null,
-            "info": "© Mother See of Holy Etchmiadzin and Armenian Bible Church, 1994",
-            "site": "",
-            "link": "https://azbyka.ru/biblia/?Rom.1amp;am"
           }
         }
       ]
@@ -1616,14 +1539,7 @@
             "site": "",
             "link": "https://www.bible.com/bible/2324/JDG.11.AZJ08"
           }
-        }
-      ]
-    },
-    {
-      "language": "AzerbaijanSouth",
-      "native_name": "AzerbaijanSouth",
-      "iso_code": null,
-      "translations": [
+        },
         {
           "id": "azerbaijansouth",
           "name": "Azerbajani Bible (South) Used in Both Iran and Azerbaijan 2008",
@@ -1720,40 +1636,7 @@
             "site": "",
             "link": "https://www.bible.com/bible/1500/MAT.1.HPKB"
           }
-        }
-      ]
-    },
-    {
-      "language": "BalochiArabic",
-      "native_name": "BalochiArabic",
-      "iso_code": null,
-      "translations": [
-        {
-          "id": "balochiarabic",
-          "name": "BalochiArabic",
-          "filename": "BalochiArabicBible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/BalochiArabicBible.xml",
-          "file_size_bytes": 1620229,
-          "testament_coverage": {
-            "old_testament": false,
-            "new_testament": true,
-            "total_books": 27
-          },
-          "metadata": {
-            "status": "© 2016-22 Wycliffe Bible Translators, Inc",
-            "year": null,
-            "info": "",
-            "site": "",
-            "link": "https://www.bible.com/bible/1498/MAT.1.HPKB"
-          }
-        }
-      ]
-    },
-    {
-      "language": "BalochiSoutheren",
-      "native_name": "BalochiSoutheren",
-      "iso_code": null,
-      "translations": [
+        },
         {
           "id": "balochisoutheren",
           "name": "Balochi Southern (هُدائے پاکێن کتاب، بلۆچی زبانا)",
@@ -1772,14 +1655,7 @@
             "site": "",
             "link": "https://www.bible.com/bible/1498/MRK.16.HPKB"
           }
-        }
-      ]
-    },
-    {
-      "language": "BalochiSoutherenLatin",
-      "native_name": "BalochiSoutherenLatin",
-      "iso_code": null,
-      "translations": [
+        },
         {
           "id": "balochisoutherenlatin",
           "name": "Balochi, Southern: Latin (Hodáay Pákén Ketáb, Balochi zobáná)",
@@ -1797,6 +1673,25 @@
             "info": "",
             "site": "",
             "link": "https://www.bible.com/bible/1500/MAT.1.HPKB"
+          }
+        },
+        {
+          "id": "balochiarabic",
+          "name": "BalochiArabic",
+          "filename": "BalochiArabicBible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/BalochiArabicBible.xml",
+          "file_size_bytes": 1620229,
+          "testament_coverage": {
+            "old_testament": false,
+            "new_testament": true,
+            "total_books": 27
+          },
+          "metadata": {
+            "status": "© 2016-22 Wycliffe Bible Translators, Inc",
+            "year": null,
+            "info": "",
+            "site": "",
+            "link": "https://www.bible.com/bible/1498/MAT.1.HPKB"
           }
         }
       ]
@@ -3222,6 +3117,44 @@
           }
         },
         {
+          "id": "chinmatupi",
+          "name": "Chin (Matu Bible)",
+          "filename": "ChinMatupiBible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/ChinMatupiBible.xml",
+          "file_size_bytes": 5212841,
+          "testament_coverage": {
+            "old_testament": true,
+            "new_testament": true,
+            "total_books": 66
+          },
+          "metadata": {
+            "status": "Matupi Chin Standard Bible © Batupuei Christian Fellowship (Matupi) 2019",
+            "year": null,
+            "info": "",
+            "site": "",
+            "link": "https://www.bible.com/bible/3414/2TH.3.MCSB"
+          }
+        },
+        {
+          "id": "chintedim",
+          "name": "Chin 1977 (Tedim Bible)",
+          "filename": "ChinTedimBible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/ChinTedimBible.xml",
+          "file_size_bytes": 5384523,
+          "testament_coverage": {
+            "old_testament": true,
+            "new_testament": true,
+            "total_books": 66
+          },
+          "metadata": {
+            "status": "Tedim Bible © Bible Society of Myanmar, 1977",
+            "year": null,
+            "info": "",
+            "site": "",
+            "link": "https://www.bible.com/bible/3561/1CO.16.TB77"
+          }
+        },
+        {
           "id": "chin-2010",
           "name": "Chin 2010 ??",
           "filename": "Chin2010Bible.xml",
@@ -3238,6 +3171,25 @@
             "info": "",
             "site": "",
             "link": "No Data"
+          }
+        },
+        {
+          "id": "chintedim-2011",
+          "name": "Chin 2011 (Tedim Bible)",
+          "filename": "ChinTedim2011Bible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/ChinTedim2011Bible.xml",
+          "file_size_bytes": 5443315,
+          "testament_coverage": {
+            "old_testament": true,
+            "new_testament": true,
+            "total_books": 66
+          },
+          "metadata": {
+            "status": "Tedim (Chin) Bible © Bible Society of Myanmar, 2011",
+            "year": null,
+            "info": "",
+            "site": "",
+            "link": "https://www.bible.com/bible/368/2TH.3.TDB"
           }
         },
         {
@@ -3260,51 +3212,6 @@
           }
         },
         {
-          "id": "chintdb",
-          "name": "Chin TBD (Tedim Bible Revision 2017)",
-          "filename": "ChinTDBBible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/ChinTDBBible.xml",
-          "file_size_bytes": 5443692,
-          "testament_coverage": {
-            "old_testament": true,
-            "new_testament": true,
-            "total_books": 66
-          },
-          "metadata": {
-            "status": "Tedim (Chin) Bible © Bible Society of Myanmar, 2011",
-            "year": null,
-            "info": "",
-            "site": "",
-            "link": "https://www.bible.com/bible/368/NUM.13.TDB"
-          }
-        }
-      ]
-    },
-    {
-      "language": "ChinMatupi",
-      "native_name": "ChinMatupi",
-      "iso_code": null,
-      "translations": [
-        {
-          "id": "chinmatupi",
-          "name": "Chin (Matu Bible)",
-          "filename": "ChinMatupiBible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/ChinMatupiBible.xml",
-          "file_size_bytes": 5212841,
-          "testament_coverage": {
-            "old_testament": true,
-            "new_testament": true,
-            "total_books": 66
-          },
-          "metadata": {
-            "status": "Matupi Chin Standard Bible © Batupuei Christian Fellowship (Matupi) 2019",
-            "year": null,
-            "info": "",
-            "site": "",
-            "link": "https://www.bible.com/bible/3414/2TH.3.MCSB"
-          }
-        },
-        {
           "id": "chinmatupi-2006",
           "name": "Chin Matupi (Matu Chin New Testament 2006)",
           "filename": "ChinMatupi2006Bible.xml",
@@ -3322,14 +3229,7 @@
             "site": "",
             "link": "https://www.bible.com/bible/2489/2TH.3.MCNT2006"
           }
-        }
-      ]
-    },
-    {
-      "language": "ChinSCB2",
-      "native_name": "ChinSCB2",
-      "iso_code": null,
-      "translations": [
+        },
         {
           "id": "chinscb-2",
           "name": "Chin SCB2 (Syin Chin Bible)",
@@ -3348,14 +3248,7 @@
             "site": "",
             "link": "https://www.bible.com/bible/326/MAT.1.SCB2"
           }
-        }
-      ]
-    },
-    {
-      "language": "ChinTB77",
-      "native_name": "ChinTB77",
-      "iso_code": null,
-      "translations": [
+        },
         {
           "id": "chintb-77",
           "name": "Chin TB77 (Tedim Bible)",
@@ -3374,14 +3267,26 @@
             "site": "",
             "link": "https://www.bible.com/bible/3561/MAT.1.TB77"
           }
-        }
-      ]
-    },
-    {
-      "language": "ChinTBR17",
-      "native_name": "ChinTBR17",
-      "iso_code": null,
-      "translations": [
+        },
+        {
+          "id": "chintdb",
+          "name": "Chin TBD (Tedim Bible Revision 2017)",
+          "filename": "ChinTDBBible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/ChinTDBBible.xml",
+          "file_size_bytes": 5443692,
+          "testament_coverage": {
+            "old_testament": true,
+            "new_testament": true,
+            "total_books": 66
+          },
+          "metadata": {
+            "status": "Tedim (Chin) Bible © Bible Society of Myanmar, 2011",
+            "year": null,
+            "info": "",
+            "site": "",
+            "link": "https://www.bible.com/bible/368/NUM.13.TDB"
+          }
+        },
         {
           "id": "chintbr-17",
           "name": "Chin TBR17 (Tedim Bible Revision 2017)",
@@ -3400,59 +3305,7 @@
             "site": "",
             "link": "https://www.bible.com/bible/4189/MAT.1.TBR17"
           }
-        }
-      ]
-    },
-    {
-      "language": "ChinTedim",
-      "native_name": "ChinTedim",
-      "iso_code": null,
-      "translations": [
-        {
-          "id": "chintedim",
-          "name": "Chin 1977 (Tedim Bible)",
-          "filename": "ChinTedimBible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/ChinTedimBible.xml",
-          "file_size_bytes": 5384523,
-          "testament_coverage": {
-            "old_testament": true,
-            "new_testament": true,
-            "total_books": 66
-          },
-          "metadata": {
-            "status": "Tedim Bible © Bible Society of Myanmar, 1977",
-            "year": null,
-            "info": "",
-            "site": "",
-            "link": "https://www.bible.com/bible/3561/1CO.16.TB77"
-          }
         },
-        {
-          "id": "chintedim-2011",
-          "name": "Chin 2011 (Tedim Bible)",
-          "filename": "ChinTedim2011Bible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/ChinTedim2011Bible.xml",
-          "file_size_bytes": 5443315,
-          "testament_coverage": {
-            "old_testament": true,
-            "new_testament": true,
-            "total_books": 66
-          },
-          "metadata": {
-            "status": "Tedim (Chin) Bible © Bible Society of Myanmar, 2011",
-            "year": null,
-            "info": "",
-            "site": "",
-            "link": "https://www.bible.com/bible/368/2TH.3.TDB"
-          }
-        }
-      ]
-    },
-    {
-      "language": "Chinese",
-      "native_name": "中文",
-      "iso_code": "zh",
-      "translations": [
         {
           "id": "chineseccbs",
           "name": "Chinese (Simplified) Contemporary Bible (CCB Bible) (圣经当代译本修订版)",
@@ -4629,14 +4482,7 @@
             "site": "",
             "link": "https://www.bible.com/bible/242/LUK.12.DIK"
           }
-        }
-      ]
-    },
-    {
-      "language": "DinkaL",
-      "native_name": "DinkaL",
-      "iso_code": null,
-      "translations": [
+        },
         {
           "id": "dinkalekjot",
           "name": "DinkaLEKJOT",
@@ -5390,6 +5236,25 @@
           }
         },
         {
+          "id": "englishnkj",
+          "name": "English NKJ 1982",
+          "filename": "EnglishNKJBible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/EnglishNKJBible.xml",
+          "file_size_bytes": 5103586,
+          "testament_coverage": {
+            "old_testament": true,
+            "new_testament": true,
+            "total_books": 66
+          },
+          "metadata": {
+            "status": "The Holy Bible, New King James Version, Copyright © 1982 Thomas Nelson",
+            "year": null,
+            "info": "",
+            "site": "",
+            "link": "https://www.bible.com/bible/114/REV.22.NKJV"
+          }
+        },
+        {
           "id": "englishnlt",
           "name": "English NLT",
           "filename": "EnglishNLTBible.xml",
@@ -5520,25 +5385,6 @@
             "info": "",
             "site": "",
             "link": "https://read.lsbible.org/?q=Matthew+1"
-          }
-        },
-        {
-          "id": "englishnkj",
-          "name": "Enlglish NKJ",
-          "filename": "EnglishNKJBible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/EnglishNKJBible.xml",
-          "file_size_bytes": 5172943,
-          "testament_coverage": {
-            "old_testament": true,
-            "new_testament": true,
-            "total_books": 66
-          },
-          "metadata": {
-            "status": "Public Domain",
-            "year": null,
-            "info": "",
-            "site": "",
-            "link": ""
           }
         }
       ]
@@ -6256,31 +6102,24 @@
       "iso_code": null,
       "translations": [
         {
-          "id": "fulfulde-2010",
-          "name": "Fulfulde Bible (Caka Nigeria) 2010",
-          "filename": "Fulfulde2010Bible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/Fulfulde2010Bible.xml",
-          "file_size_bytes": 1274770,
+          "id": "fulfuldeadamawa",
+          "name": "Fulfulde Adamawa Bible",
+          "filename": "FulfuldeAdamawaBible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/FulfuldeAdamawaBible.xml",
+          "file_size_bytes": 4762548,
           "testament_coverage": {
-            "old_testament": false,
+            "old_testament": true,
             "new_testament": true,
-            "total_books": 27
+            "total_books": 66
           },
           "metadata": {
-            "status": "© 2010, Bible League. All rights reserved.",
+            "status": "DEFTERE ALLAH © Alliance Biblique du Cameroun, 1994",
             "year": null,
             "info": "",
-            "site": "https://www.bible.com/bible/1159/MAT.1.FUV",
+            "site": "https://www.bible.com/bible/906/GEN.1.FB",
             "link": ""
           }
-        }
-      ]
-    },
-    {
-      "language": "FulfuldeAadi",
-      "native_name": "FulfuldeAadi",
-      "iso_code": null,
-      "translations": [
+        },
         {
           "id": "fulfuldeaadi",
           "name": "Fulfulde Bible (Aadi keyri: linjiila iisaa almasiihu)",
@@ -6299,40 +6138,7 @@
             "site": "https://www.bible.com/bible/1175/MAT.2.FFM",
             "link": ""
           }
-        }
-      ]
-    },
-    {
-      "language": "FulfuldeAdamawa",
-      "native_name": "FulfuldeAdamawa",
-      "iso_code": null,
-      "translations": [
-        {
-          "id": "fulfuldeadamawa",
-          "name": "Fulfulde Adamawa Bible",
-          "filename": "FulfuldeAdamawaBible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/FulfuldeAdamawaBible.xml",
-          "file_size_bytes": 4762548,
-          "testament_coverage": {
-            "old_testament": true,
-            "new_testament": true,
-            "total_books": 66
-          },
-          "metadata": {
-            "status": "DEFTERE ALLAH © Alliance Biblique du Cameroun, 1994",
-            "year": null,
-            "info": "",
-            "site": "https://www.bible.com/bible/906/GEN.1.FB",
-            "link": ""
-          }
-        }
-      ]
-    },
-    {
-      "language": "FulfuldeAlkawal",
-      "native_name": "FulfuldeAlkawal",
-      "iso_code": null,
-      "translations": [
+        },
         {
           "id": "fulfuldealkawal",
           "name": "Fulfulde Bible (Alkawal Kesal) Central Eastern Niger",
@@ -6351,40 +6157,7 @@
             "site": "https://www.bible.com/bible/1373/MAT.1.FUQ",
             "link": ""
           }
-        }
-      ]
-    },
-    {
-      "language": "FulfuldeArabic",
-      "native_name": "FulfuldeArabic",
-      "iso_code": null,
-      "translations": [
-        {
-          "id": "fulfuldearabic",
-          "name": "Fulfulde Bible (Caka Nigeria Arabic Script) (اَلْکَوَلْ کٜسَلْ ندٜرْ فُلْفُلْدٜ شَکَ نَاجٜىٰرِيَ)",
-          "filename": "FulfuldeArabicBible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/FulfuldeArabicBible.xml",
-          "file_size_bytes": 2231835,
-          "testament_coverage": {
-            "old_testament": false,
-            "new_testament": true,
-            "total_books": 27
-          },
-          "metadata": {
-            "status": "© 2011, Bible League, All rights reserved.",
-            "year": null,
-            "info": "",
-            "site": "https://www.bible.com/bible/2377/MAT.2.FUV",
-            "link": ""
-          }
-        }
-      ]
-    },
-    {
-      "language": "FulfuldeBenin",
-      "native_name": "FulfuldeBenin",
-      "iso_code": null,
-      "translations": [
+        },
         {
           "id": "fulfuldebenin",
           "name": "Fulfulde Bible (Borgu Benin)",
@@ -6403,14 +6176,45 @@
             "site": "https://www.bible.com/bible/3088/MAT.1.BFB",
             "link": ""
           }
-        }
-      ]
-    },
-    {
-      "language": "FulfuldeBurkinaFaso",
-      "native_name": "FulfuldeBurkinaFaso",
-      "iso_code": null,
-      "translations": [
+        },
+        {
+          "id": "fulfuldearabic",
+          "name": "Fulfulde Bible (Caka Nigeria Arabic Script) (اَلْکَوَلْ کٜسَلْ ندٜرْ فُلْفُلْدٜ شَکَ نَاجٜىٰرِيَ)",
+          "filename": "FulfuldeArabicBible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/FulfuldeArabicBible.xml",
+          "file_size_bytes": 2231835,
+          "testament_coverage": {
+            "old_testament": false,
+            "new_testament": true,
+            "total_books": 27
+          },
+          "metadata": {
+            "status": "© 2011, Bible League, All rights reserved.",
+            "year": null,
+            "info": "",
+            "site": "https://www.bible.com/bible/2377/MAT.2.FUV",
+            "link": ""
+          }
+        },
+        {
+          "id": "fulfulde-2010",
+          "name": "Fulfulde Bible (Caka Nigeria) 2010",
+          "filename": "Fulfulde2010Bible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/Fulfulde2010Bible.xml",
+          "file_size_bytes": 1274770,
+          "testament_coverage": {
+            "old_testament": false,
+            "new_testament": true,
+            "total_books": 27
+          },
+          "metadata": {
+            "status": "© 2010, Bible League. All rights reserved.",
+            "year": null,
+            "info": "",
+            "site": "https://www.bible.com/bible/1159/MAT.1.FUV",
+            "link": ""
+          }
+        },
         {
           "id": "fulfuldeburkinafaso",
           "name": "Fulfulde Bible (Dewtere Laamɗo Amaana Keso) (Burkina Faso)",
@@ -6429,14 +6233,7 @@
             "site": "https://www.bible.com/bible/1032/MAT.1.FBFNT",
             "link": ""
           }
-        }
-      ]
-    },
-    {
-      "language": "FulfuldeDewtere",
-      "native_name": "FulfuldeDewtere",
-      "iso_code": null,
-      "translations": [
+        },
         {
           "id": "fulfuldedewtere",
           "name": "Fulfulde Bible (Dewtere Laamɗo Fulfulde Burkina Faso)",
@@ -6455,14 +6252,7 @@
             "site": "https://www.bible.com/bible/3093/MAT.1.FBF",
             "link": ""
           }
-        }
-      ]
-    },
-    {
-      "language": "FulfuldeWestNiger",
-      "native_name": "FulfuldeWestNiger",
-      "iso_code": null,
-      "translations": [
+        },
         {
           "id": "fulfuldewestniger",
           "name": "Fulfulde Bible (Western Niger)",
@@ -7061,6 +6851,25 @@
             "info": "",
             "site": "",
             "link": "No Data"
+          }
+        },
+        {
+          "id": "originalgreek",
+          "name": "Greek New Testament",
+          "filename": "OriginalGreekBible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/OriginalGreekBible.xml",
+          "file_size_bytes": 1992954,
+          "testament_coverage": {
+            "old_testament": false,
+            "new_testament": true,
+            "total_books": 27
+          },
+          "metadata": {
+            "status": "",
+            "year": null,
+            "info": "",
+            "site": "",
+            "link": ""
           }
         },
         {
@@ -7860,6 +7669,25 @@
       "native_name": "עברית",
       "iso_code": "he",
       "translations": [
+        {
+          "id": "originalhebrew",
+          "name": "Hebrew",
+          "filename": "OriginalHebrewBible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/OriginalHebrewBible.xml",
+          "file_size_bytes": 3592977,
+          "testament_coverage": {
+            "old_testament": true,
+            "new_testament": false,
+            "total_books": 39
+          },
+          "metadata": {
+            "status": "",
+            "year": null,
+            "info": "Modern Hebrew (1977) -  Best Can do More Original Google Translate does not Understand.",
+            "site": "",
+            "link": ""
+          }
+        },
         {
           "id": "hebrewhhh",
           "name": "Hebrew (HHH) 2009 (Habrit Hakhadasha/Haderekh)",
@@ -9040,6 +8868,44 @@
           }
         },
         {
+          "id": "indonesianinotazi",
+          "name": "Indonesian INOTAZI (Indonesian Tazi NT)",
+          "filename": "IndonesianINOTAZIBible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/IndonesianINOTAZIBible.xml",
+          "file_size_bytes": 1513167,
+          "testament_coverage": {
+            "old_testament": false,
+            "new_testament": true,
+            "total_books": 27
+          },
+          "metadata": {
+            "status": "KITAB SUCI INJIL DENGAN CATATAN STUDI © LAI 2004",
+            "year": null,
+            "info": "",
+            "site": "",
+            "link": "https://www.bible.com/bible/2862/GAL.6.INOTAZI"
+          }
+        },
+        {
+          "id": "indonesianpbtb-2",
+          "name": "Indonesian PBTB2 (Perjanjian Baru Terjemahan Baru Edisi 2)",
+          "filename": "IndonesianPBTB2Bible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/IndonesianPBTB2Bible.xml",
+          "file_size_bytes": 1396558,
+          "testament_coverage": {
+            "old_testament": false,
+            "new_testament": true,
+            "total_books": 27
+          },
+          "metadata": {
+            "status": "Indonesian Bible Society",
+            "year": null,
+            "info": "",
+            "site": "",
+            "link": "https://www.bible.com/bible/2863/MAT.1.PBTB2"
+          }
+        },
+        {
           "id": "indonesiantl",
           "name": "Indonesian TL 1954 (Alkitab Terjemahan Lama)",
           "filename": "IndonesianTLBible.xml",
@@ -9075,58 +8941,6 @@
             "info": "",
             "site": "",
             "link": "https://alkitab.mobi/vmd/Kej/1#v16"
-          }
-        }
-      ]
-    },
-    {
-      "language": "IndonesianIN",
-      "native_name": "IndonesianIN",
-      "iso_code": null,
-      "translations": [
-        {
-          "id": "indonesianinotazi",
-          "name": "Indonesian INOTAZI (Indonesian Tazi NT)",
-          "filename": "IndonesianINOTAZIBible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/IndonesianINOTAZIBible.xml",
-          "file_size_bytes": 1513167,
-          "testament_coverage": {
-            "old_testament": false,
-            "new_testament": true,
-            "total_books": 27
-          },
-          "metadata": {
-            "status": "KITAB SUCI INJIL DENGAN CATATAN STUDI © LAI 2004",
-            "year": null,
-            "info": "",
-            "site": "",
-            "link": "https://www.bible.com/bible/2862/GAL.6.INOTAZI"
-          }
-        }
-      ]
-    },
-    {
-      "language": "IndonesianPBTB2",
-      "native_name": "IndonesianPBTB2",
-      "iso_code": null,
-      "translations": [
-        {
-          "id": "indonesianpbtb-2",
-          "name": "Indonesian PBTB2 (Perjanjian Baru Terjemahan Baru Edisi 2)",
-          "filename": "IndonesianPBTB2Bible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/IndonesianPBTB2Bible.xml",
-          "file_size_bytes": 1396558,
-          "testament_coverage": {
-            "old_testament": false,
-            "new_testament": true,
-            "total_books": 27
-          },
-          "metadata": {
-            "status": "Indonesian Bible Society",
-            "year": null,
-            "info": "",
-            "site": "",
-            "link": "https://www.bible.com/bible/2863/MAT.1.PBTB2"
           }
         }
       ]
@@ -9898,14 +9712,7 @@
             "site": "",
             "link": "https://www.bible.com/bible/2773/PHP.2.KAMBA"
           }
-        }
-      ]
-    },
-    {
-      "language": "KambaMB",
-      "native_name": "KambaMB",
-      "iso_code": null,
-      "translations": [
+        },
         {
           "id": "kambambivlia",
           "name": "Kamba (Mbivilia) 1956",
@@ -10116,14 +9923,7 @@
             "site": "",
             "link": "https://www.bible.com/bible/1732/MAT.7.KRKNT"
           }
-        }
-      ]
-    },
-    {
-      "language": "KarakalpakK",
-      "native_name": "KarakalpakK",
-      "iso_code": null,
-      "translations": [
+        },
         {
           "id": "karakalpakk-2022",
           "name": "© Институт перевода Библии, 2022",
@@ -11125,6 +10925,44 @@
           }
         },
         {
+          "id": "kurdishkmrntc",
+          "name": "Kurdish Kurmanji Cyrillic (KMRNTC) (Пәймана Ну (Инщил)) 2000",
+          "filename": "KurdishKMRNTCBible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/KurdishKMRNTCBible.xml",
+          "file_size_bytes": 1781660,
+          "testament_coverage": {
+            "old_testament": false,
+            "new_testament": true,
+            "total_books": 27
+          },
+          "metadata": {
+            "status": "© Институт перевода Библии, 2000, 2011",
+            "year": null,
+            "info": "",
+            "site": "",
+            "link": "https://www.bible.com/bible/2557/MRK.16.KMRNTC"
+          }
+        },
+        {
+          "id": "kurdishkmrntl",
+          "name": "Kurdish Kurmanji Latin (Peymana Nû (Încîl))",
+          "filename": "KurdishKMRNTLBible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/KurdishKMRNTLBible.xml",
+          "file_size_bytes": 1239946,
+          "testament_coverage": {
+            "old_testament": false,
+            "new_testament": true,
+            "total_books": 27
+          },
+          "metadata": {
+            "status": "© Институт перевода Библии, 2000, 2011",
+            "year": null,
+            "info": "",
+            "site": "",
+            "link": "https://www.bible.com/bible/2556/MRK.16.KMRNTL"
+          }
+        },
+        {
           "id": "kurdish",
           "name": "Kurdish Sorani KSS 2020 (كوردی سۆرانی ستانده‌رد) ",
           "filename": "KurdishBible.xml",
@@ -11179,51 +11017,6 @@
             "info": "",
             "site": "",
             "link": "https://www.bible.com/bible/1852/MRK.2.PNTZS"
-          }
-        }
-      ]
-    },
-    {
-      "language": "KurdishK",
-      "native_name": "KurdishK",
-      "iso_code": null,
-      "translations": [
-        {
-          "id": "kurdishkmrntc",
-          "name": "Kurdish Kurmanji Cyrillic (KMRNTC) (Пәймана Ну (Инщил)) 2000",
-          "filename": "KurdishKMRNTCBible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/KurdishKMRNTCBible.xml",
-          "file_size_bytes": 1781660,
-          "testament_coverage": {
-            "old_testament": false,
-            "new_testament": true,
-            "total_books": 27
-          },
-          "metadata": {
-            "status": "© Институт перевода Библии, 2000, 2011",
-            "year": null,
-            "info": "",
-            "site": "",
-            "link": "https://www.bible.com/bible/2557/MRK.16.KMRNTC"
-          }
-        },
-        {
-          "id": "kurdishkmrntl",
-          "name": "Kurdish Kurmanji Latin (Peymana Nû (Încîl))",
-          "filename": "KurdishKMRNTLBible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/KurdishKMRNTLBible.xml",
-          "file_size_bytes": 1239946,
-          "testament_coverage": {
-            "old_testament": false,
-            "new_testament": true,
-            "total_books": 27
-          },
-          "metadata": {
-            "status": "© Институт перевода Библии, 2000, 2011",
-            "year": null,
-            "info": "",
-            "site": "",
-            "link": "https://www.bible.com/bible/2556/MRK.16.KMRNTL"
           }
         }
       ]
@@ -12341,32 +12134,6 @@
           }
         },
         {
-          "id": "macedonian-2023",
-          "name": "Macedonian 2023 (Нов Превод на Новиот Завет 2023)",
-          "filename": "Macedonian2023Bible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/Macedonian2023Bible.xml",
-          "file_size_bytes": 1792880,
-          "testament_coverage": {
-            "old_testament": false,
-            "new_testament": true,
-            "total_books": 27
-          },
-          "metadata": {
-            "status": "© Библиско Здружение на Р. Македонија 2023",
-            "year": null,
-            "info": "",
-            "site": "",
-            "link": "https://www.bible.com/bible/3814/MAT.8.MAK2023"
-          }
-        }
-      ]
-    },
-    {
-      "language": "MacedonianD",
-      "native_name": "MacedonianD",
-      "iso_code": null,
-      "translations": [
-        {
           "id": "macedonian-2006d",
           "name": "Macedonian 2006 D - (Свето Писмо: Стандардна Библија 2006 (со Девтероканонски Книги))",
           "filename": "Macedonian2006DBible.xml",
@@ -12383,6 +12150,25 @@
             "info": "",
             "site": "",
             "link": "https://www.bible.com/bible/1272/MAT.8.MK2006D"
+          }
+        },
+        {
+          "id": "macedonian-2023",
+          "name": "Macedonian 2023 (Нов Превод на Новиот Завет 2023)",
+          "filename": "Macedonian2023Bible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/Macedonian2023Bible.xml",
+          "file_size_bytes": 1792880,
+          "testament_coverage": {
+            "old_testament": false,
+            "new_testament": true,
+            "total_books": 27
+          },
+          "metadata": {
+            "status": "© Библиско Здружение на Р. Македонија 2023",
+            "year": null,
+            "info": "",
+            "site": "",
+            "link": "https://www.bible.com/bible/3814/MAT.8.MAK2023"
           }
         }
       ]
@@ -12526,14 +12312,7 @@
             "site": "",
             "link": "https://www.bible.com/bible/2375/MAT.1.CHIMAKONDE"
           }
-        }
-      ]
-    },
-    {
-      "language": "MakondeShi",
-      "native_name": "MakondeShi",
-      "iso_code": null,
-      "translations": [
+        },
         {
           "id": "makondeshi",
           "name": "MakondeShi",
@@ -14002,6 +13781,25 @@
           }
         },
         {
+          "id": "norwegianbibel-1978",
+          "name": "Norwegian 1978 (Bibel1978/1985 - Bibelselskapet)",
+          "filename": "NorwegianBIBEL1978Bible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/NorwegianBIBEL1978Bible.xml",
+          "file_size_bytes": 4756976,
+          "testament_coverage": {
+            "old_testament": true,
+            "new_testament": true,
+            "total_books": 66
+          },
+          "metadata": {
+            "status": "© Norwegian Bible Society, 1978/85",
+            "year": null,
+            "info": "",
+            "site": "",
+            "link": "https://www.bible.com/bible/30/MAT.8.BIBEL1978"
+          }
+        },
+        {
           "id": "norwegianny-2011",
           "name": "Norwegian 2011 (Bibelen 2011 Nynorsk)",
           "filename": "NorwegianNY2011Bible.xml",
@@ -14386,86 +14184,8 @@
       ]
     },
     {
-      "language": "OriginalGreek",
-      "native_name": "OriginalGreek",
-      "iso_code": null,
-      "translations": [
-        {
-          "id": "originalgreek",
-          "name": "Greek New Testament",
-          "filename": "OriginalGreekBible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/OriginalGreekBible.xml",
-          "file_size_bytes": 1992954,
-          "testament_coverage": {
-            "old_testament": false,
-            "new_testament": true,
-            "total_books": 27
-          },
-          "metadata": {
-            "status": "",
-            "year": null,
-            "info": "",
-            "site": "",
-            "link": ""
-          }
-        }
-      ]
-    },
-    {
-      "language": "OriginalHebrew",
-      "native_name": "OriginalHebrew",
-      "iso_code": null,
-      "translations": [
-        {
-          "id": "originalhebrew",
-          "name": "Hebrew",
-          "filename": "OriginalHebrewBible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/OriginalHebrewBible.xml",
-          "file_size_bytes": 3592977,
-          "testament_coverage": {
-            "old_testament": true,
-            "new_testament": false,
-            "total_books": 39
-          },
-          "metadata": {
-            "status": "",
-            "year": null,
-            "info": "Modern Hebrew (1977) -  Best Can do More Original Google Translate does not Understand.",
-            "site": "",
-            "link": ""
-          }
-        }
-      ]
-    },
-    {
       "language": "Oromo",
       "native_name": "Oromo",
-      "iso_code": null,
-      "translations": [
-        {
-          "id": "oromoguj",
-          "name": "Oromo Gujiii (KITAABA WOYYICHA) - No Year",
-          "filename": "OromoGUJBible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/OromoGUJBible.xml",
-          "file_size_bytes": 5482318,
-          "testament_coverage": {
-            "old_testament": true,
-            "new_testament": true,
-            "total_books": 66
-          },
-          "metadata": {
-            "status": "The Word for the World International and Bible Society of Ethiopia",
-            "year": null,
-            "info": "",
-            "site": "",
-            "link": "https://www.bible.com/bible/4125/MAT.1.GUJ"
-          }
-        }
-      ]
-    },
-    {
-      "language": "OromoGuji",
-      "native_name": "OromoGuji",
       "iso_code": null,
       "translations": [
         {
@@ -14486,40 +14206,7 @@
             "site": "https://www.bible.com/bible/3176/MAT.1.GAXNT",
             "link": ""
           }
-        }
-      ]
-    },
-    {
-      "language": "OromoKakuuHaaraaka",
-      "native_name": "OromoKakuuHaaraaka",
-      "iso_code": null,
-      "translations": [
-        {
-          "id": "oromokakuuhaaraaka",
-          "name": "Oromo Bible (Kakuu Haaraaka) - No Year",
-          "filename": "OromoKakuuHaaraakaBible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/OromoKakuuHaaraakaBible.xml",
-          "file_size_bytes": 1269330,
-          "testament_coverage": {
-            "old_testament": false,
-            "new_testament": true,
-            "total_books": 27
-          },
-          "metadata": {
-            "status": "Bible Society of Ethiopia KakHaa PUBLISHER",
-            "year": null,
-            "info": "",
-            "site": "https://www.bible.com/bible/3175/MAT.1.KAKHAA",
-            "link": ""
-          }
-        }
-      ]
-    },
-    {
-      "language": "OromoKitaabaWaaqa",
-      "native_name": "OromoKitaabaWaaqa",
-      "iso_code": null,
-      "translations": [
+        },
         {
           "id": "oromokitaabawaaqa",
           "name": "Oromo Bible (KITAABA WAAQA) 2019",
@@ -14538,14 +14225,26 @@
             "site": "https://www.bible.com/bible/2935/GEN.1.BOR",
             "link": ""
           }
-        }
-      ]
-    },
-    {
-      "language": "OromoKitaabaWoyyuu",
-      "native_name": "OromoKitaabaWoyyuu",
-      "iso_code": null,
-      "translations": [
+        },
+        {
+          "id": "oromokakuuhaaraaka",
+          "name": "Oromo Bible (Kakuu Haaraaka) - No Year",
+          "filename": "OromoKakuuHaaraakaBible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/OromoKakuuHaaraakaBible.xml",
+          "file_size_bytes": 1269330,
+          "testament_coverage": {
+            "old_testament": false,
+            "new_testament": true,
+            "total_books": 27
+          },
+          "metadata": {
+            "status": "Bible Society of Ethiopia KakHaa PUBLISHER",
+            "year": null,
+            "info": "",
+            "site": "https://www.bible.com/bible/3175/MAT.1.KAKHAA",
+            "link": ""
+          }
+        },
         {
           "id": "oromokitaabawoyyuu",
           "name": "Oromo Bible (Kitaaba Woyyuu) - No Year",
@@ -14564,14 +14263,26 @@
             "site": "https://www.bible.com/bible/3497/GEN.1.KITWOY",
             "link": ""
           }
-        }
-      ]
-    },
-    {
-      "language": "OromoWaadaaHaarawa",
-      "native_name": "OromoWaadaaHaarawa",
-      "iso_code": null,
-      "translations": [
+        },
+        {
+          "id": "oromowaadaalammataa",
+          "name": "Oromo Bible (WAADAA LAMMATAA) 2013",
+          "filename": "OromoWaadaaLammataaBible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/OromoWaadaaLammataaBible.xml",
+          "file_size_bytes": 1265961,
+          "testament_coverage": {
+            "old_testament": false,
+            "new_testament": true,
+            "total_books": 27
+          },
+          "metadata": {
+            "status": "Arsi-Bale Oromo New Testament, Literal Type Translation © Light of Hope Ministry, 2013",
+            "year": null,
+            "info": "",
+            "site": "https://www.bible.com/bible/3173/MAT.1.WLNT",
+            "link": ""
+          }
+        },
         {
           "id": "oromowaadaahaarawa",
           "name": "Oromo Bible (Waadaa Haarawa) - No Year",
@@ -14590,31 +14301,24 @@
             "site": "https://www.bible.com/bible/3174/MAT.1.ARSIDNT",
             "link": ""
           }
-        }
-      ]
-    },
-    {
-      "language": "OromoWaadaaLammataa",
-      "native_name": "OromoWaadaaLammataa",
-      "iso_code": null,
-      "translations": [
+        },
         {
-          "id": "oromowaadaalammataa",
-          "name": "Oromo Bible (WAADAA LAMMATAA) 2013",
-          "filename": "OromoWaadaaLammataaBible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/OromoWaadaaLammataaBible.xml",
-          "file_size_bytes": 1265961,
+          "id": "oromoguj",
+          "name": "Oromo Gujiii (KITAABA WOYYICHA) - No Year",
+          "filename": "OromoGUJBible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/OromoGUJBible.xml",
+          "file_size_bytes": 5482318,
           "testament_coverage": {
-            "old_testament": false,
+            "old_testament": true,
             "new_testament": true,
-            "total_books": 27
+            "total_books": 66
           },
           "metadata": {
-            "status": "Arsi-Bale Oromo New Testament, Literal Type Translation © Light of Hope Ministry, 2013",
+            "status": "The Word for the World International and Bible Society of Ethiopia",
             "year": null,
             "info": "",
-            "site": "https://www.bible.com/bible/3173/MAT.1.WLNT",
-            "link": ""
+            "site": "",
+            "link": "https://www.bible.com/bible/4125/MAT.1.GUJ"
           }
         }
       ]
@@ -15785,6 +15489,63 @@
           }
         },
         {
+          "id": "romanibaltic-2019",
+          "name": "Romani Baltic (Библия - Пэ Балтитко Романи чиб (Романэс) 2019)",
+          "filename": "RomaniBaltic2019Bible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/RomaniBaltic2019Bible.xml",
+          "file_size_bytes": 9380961,
+          "testament_coverage": {
+            "old_testament": true,
+            "new_testament": true,
+            "total_books": 66
+          },
+          "metadata": {
+            "status": "United Bible Societies for the Baltic Romani Mission",
+            "year": null,
+            "info": "",
+            "site": "",
+            "link": "https://www.bible.com/bible/2606/GEN.7.ROMBALT"
+          }
+        },
+        {
+          "id": "romanibalticlt-2019",
+          "name": "Romani Baltic Latin (Biblija - Pe Baltitko Romani čib (Romanes) 2019)",
+          "filename": "RomaniBalticLT2019Bible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/RomaniBalticLT2019Bible.xml",
+          "file_size_bytes": 6212242,
+          "testament_coverage": {
+            "old_testament": true,
+            "new_testament": true,
+            "total_books": 66
+          },
+          "metadata": {
+            "status": "United Bible Societies for the Baltic Romani Mission",
+            "year": null,
+            "info": "",
+            "site": "",
+            "link": "https://www.bible.com/bible/2605/GEN.7.ROMBALTR"
+          }
+        },
+        {
+          "id": "romanichergash",
+          "name": "Romani Chergash Ursari (Biblija pe Romani Čhib) - No Year",
+          "filename": "RomaniCHERGASHBible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/RomaniCHERGASHBible.xml",
+          "file_size_bytes": 1288514,
+          "testament_coverage": {
+            "old_testament": false,
+            "new_testament": true,
+            "total_books": 27
+          },
+          "metadata": {
+            "status": "Romani Chergash Bible The Word for the World International",
+            "year": null,
+            "info": "",
+            "site": "",
+            "link": "https://www.bible.com/bible/4229/REV.2.R%25C4%258CB"
+          }
+        },
+        {
           "id": "romani-2007",
           "name": "Romani Chile (Vlax Chileana) (Nuevo Testamento Romané 2007)",
           "filename": "Romani2007Bible.xml",
@@ -15801,6 +15562,44 @@
             "info": "",
             "site": "",
             "link": "https://www.bible.com/bible/391/MRK.8.ROM07"
+          }
+        },
+        {
+          "id": "romanirom-07",
+          "name": "Romani Chilean (Nuevo Testamento Romané 2007)",
+          "filename": "RomaniROM07Bible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/RomaniROM07Bible.xml",
+          "file_size_bytes": 1239462,
+          "testament_coverage": {
+            "old_testament": false,
+            "new_testament": true,
+            "total_books": 27
+          },
+          "metadata": {
+            "status": "Nuevo Testamento en Romané © Sociedad Bíblica Chilena, 2007",
+            "year": null,
+            "info": "",
+            "site": "",
+            "link": "https://www.bible.com/bible/391/REV.2.ROM07"
+          }
+        },
+        {
+          "id": "romanirom-6",
+          "name": "Romani German (ROM6) (O Debleskro Drom 2021)",
+          "filename": "RomaniROM6Bible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/RomaniROM6Bible.xml",
+          "file_size_bytes": 5847209,
+          "testament_coverage": {
+            "old_testament": true,
+            "new_testament": true,
+            "total_books": 66
+          },
+          "metadata": {
+            "status": "© 2021 Romanes-Arbeit-Marburg e.V.",
+            "year": null,
+            "info": "",
+            "site": "",
+            "link": "https://www.bible.com/bible/3082/REV.2.SINT2021"
           }
         },
         {
@@ -15880,32 +15679,6 @@
           }
         },
         {
-          "id": "romanikald-2020",
-          "name": "Romani from Romanian (E Romaii Biblia 2020 (Kăldărărihko))",
-          "filename": "RomaniKALD2020Bible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/RomaniKALD2020Bible.xml",
-          "file_size_bytes": 5368173,
-          "testament_coverage": {
-            "old_testament": false,
-            "new_testament": false,
-            "total_books": 0
-          },
-          "metadata": {
-            "status": "Bible translated into Kalderash Romani by Luminita Cioaba 2020, from the Cornilescu version of the Romanian Bible. Rights are held by the British and Foreign Bible Society and the Interconfessional Bible Society of Romania.",
-            "year": null,
-            "info": "",
-            "site": "",
-            "link": "https://www.bible.com/bible/3114/LUK.8.KALD2020"
-          }
-        }
-      ]
-    },
-    {
-      "language": "RomaniB",
-      "native_name": "RomaniB",
-      "iso_code": null,
-      "translations": [
-        {
           "id": "romanibachro",
           "name": "Romani Ursari 2018 (Biblia ande Chib Romani)",
           "filename": "RomaniBACHROBible.xml",
@@ -15923,128 +15696,24 @@
             "site": "",
             "link": "https://www.bible.com/bible/3370/REV.2.BACHRO"
           }
-        }
-      ]
-    },
-    {
-      "language": "RomaniBaltic",
-      "native_name": "RomaniBaltic",
-      "iso_code": null,
-      "translations": [
-        {
-          "id": "romanibaltic-2019",
-          "name": "Romani Baltic (Библия - Пэ Балтитко Романи чиб (Романэс) 2019)",
-          "filename": "RomaniBaltic2019Bible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/RomaniBaltic2019Bible.xml",
-          "file_size_bytes": 9380961,
-          "testament_coverage": {
-            "old_testament": true,
-            "new_testament": true,
-            "total_books": 66
-          },
-          "metadata": {
-            "status": "United Bible Societies for the Baltic Romani Mission",
-            "year": null,
-            "info": "",
-            "site": "",
-            "link": "https://www.bible.com/bible/2606/GEN.7.ROMBALT"
-          }
         },
         {
-          "id": "romanibalticlt-2019",
-          "name": "Romani Baltic Latin (Biblija - Pe Baltitko Romani čib (Romanes) 2019)",
-          "filename": "RomaniBalticLT2019Bible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/RomaniBalticLT2019Bible.xml",
-          "file_size_bytes": 6212242,
-          "testament_coverage": {
-            "old_testament": true,
-            "new_testament": true,
-            "total_books": 66
-          },
-          "metadata": {
-            "status": "United Bible Societies for the Baltic Romani Mission",
-            "year": null,
-            "info": "",
-            "site": "",
-            "link": "https://www.bible.com/bible/2605/GEN.7.ROMBALTR"
-          }
-        }
-      ]
-    },
-    {
-      "language": "RomaniCHE",
-      "native_name": "RomaniCHE",
-      "iso_code": null,
-      "translations": [
-        {
-          "id": "romanichergash",
-          "name": "Romani Chergash Ursari (Biblija pe Romani Čhib) - No Year",
-          "filename": "RomaniCHERGASHBible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/RomaniCHERGASHBible.xml",
-          "file_size_bytes": 1288514,
+          "id": "romanikald-2020",
+          "name": "Romani from Romanian (E Romaii Biblia 2020 (Kăldărărihko))",
+          "filename": "RomaniKALD2020Bible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/RomaniKALD2020Bible.xml",
+          "file_size_bytes": 5368173,
           "testament_coverage": {
             "old_testament": false,
-            "new_testament": true,
-            "total_books": 27
+            "new_testament": false,
+            "total_books": 0
           },
           "metadata": {
-            "status": "Romani Chergash Bible The Word for the World International",
+            "status": "Bible translated into Kalderash Romani by Luminita Cioaba 2020, from the Cornilescu version of the Romanian Bible. Rights are held by the British and Foreign Bible Society and the Interconfessional Bible Society of Romania.",
             "year": null,
             "info": "",
             "site": "",
-            "link": "https://www.bible.com/bible/4229/REV.2.R%25C4%258CB"
-          }
-        }
-      ]
-    },
-    {
-      "language": "RomaniROM07",
-      "native_name": "RomaniROM07",
-      "iso_code": null,
-      "translations": [
-        {
-          "id": "romanirom-07",
-          "name": "Romani Chilean (Nuevo Testamento Romané 2007)",
-          "filename": "RomaniROM07Bible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/RomaniROM07Bible.xml",
-          "file_size_bytes": 1239462,
-          "testament_coverage": {
-            "old_testament": false,
-            "new_testament": true,
-            "total_books": 27
-          },
-          "metadata": {
-            "status": "Nuevo Testamento en Romané © Sociedad Bíblica Chilena, 2007",
-            "year": null,
-            "info": "",
-            "site": "",
-            "link": "https://www.bible.com/bible/391/REV.2.ROM07"
-          }
-        }
-      ]
-    },
-    {
-      "language": "RomaniROM6",
-      "native_name": "RomaniROM6",
-      "iso_code": null,
-      "translations": [
-        {
-          "id": "romanirom-6",
-          "name": "Romani German (ROM6) (O Debleskro Drom 2021)",
-          "filename": "RomaniROM6Bible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/RomaniROM6Bible.xml",
-          "file_size_bytes": 5847209,
-          "testament_coverage": {
-            "old_testament": true,
-            "new_testament": true,
-            "total_books": 66
-          },
-          "metadata": {
-            "status": "© 2021 Romanes-Arbeit-Marburg e.V.",
-            "year": null,
-            "info": "",
-            "site": "",
-            "link": "https://www.bible.com/bible/3082/REV.2.SINT2021"
+            "link": "https://www.bible.com/bible/3114/LUK.8.KALD2020"
           }
         }
       ]
@@ -17954,10 +17623,10 @@
           }
         },
         {
-          "id": "sotho-2024",
+          "id": "sotho",
           "name": "Sotho 2024 (Contemporary Sepedi Nothern Sotho Bible 2024)",
-          "filename": "Sotho2024Bible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/Sotho2024Bible.xml",
+          "filename": "SothoBible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/SothoBible.xml",
           "file_size_bytes": 5038058,
           "testament_coverage": {
             "old_testament": true,
@@ -17970,25 +17639,6 @@
             "info": "",
             "site": "",
             "link": "https://www.bible.com/bible/3854/HAB.2_1.CSEB24"
-          }
-        },
-        {
-          "id": "sotho",
-          "name": "Sotho Bible - or Sepedi",
-          "filename": "SothoBible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/SothoBible.xml",
-          "file_size_bytes": 5728657,
-          "testament_coverage": {
-            "old_testament": true,
-            "new_testament": true,
-            "total_books": 66
-          },
-          "metadata": {
-            "status": "Looks Like Nothing",
-            "year": null,
-            "info": "",
-            "site": "",
-            "link": "https://www.jw.org/nso/laeprari/beibele/nwt/dipuku/ditiro/7/"
           }
         },
         {
@@ -18780,6 +18430,44 @@
           }
         },
         {
+          "id": "swahilibhntlk",
+          "name": "Swahili BHNTLK (Biblia Habari Njema: Toleo la Kujifunza)",
+          "filename": "SwahiliBHNTLKBible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/SwahiliBHNTLKBible.xml",
+          "file_size_bytes": 4970593,
+          "testament_coverage": {
+            "old_testament": true,
+            "new_testament": true,
+            "total_books": 66
+          },
+          "metadata": {
+            "status": "Copyright The Bible Society of Tanzania, 1993 The Bible Society of Kenya 1993",
+            "year": null,
+            "info": "",
+            "site": "",
+            "link": "https://www.bible.com/bible/2144/GEN.1.BHNTLK"
+          }
+        },
+        {
+          "id": "swahilicontemporary",
+          "name": "Swahili NEN (Neno: Bibilia Takatifu 2025)",
+          "filename": "SwahiliContemporaryBible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/SwahiliContemporaryBible.xml",
+          "file_size_bytes": 5012080,
+          "testament_coverage": {
+            "old_testament": true,
+            "new_testament": true,
+            "total_books": 66
+          },
+          "metadata": {
+            "status": "Neno: Biblia Takatifu™ Neno™ Hakimiliki © 1984, 1989, 2009, 2015 na Biblica, Inc",
+            "year": null,
+            "info": "",
+            "site": "",
+            "link": "https://www.bible.com/bible/1627/MAT.3.NENO"
+          }
+        },
+        {
           "id": "swahilinmm",
           "name": "Swahili NMM (Neno: Maandiko Matakatifu) 2018",
           "filename": "SwahiliNMMBible.xml",
@@ -18796,6 +18484,63 @@
             "info": "",
             "site": "",
             "link": "https://www.bible.com/bible/2729/GEN.1.NMM"
+          }
+        },
+        {
+          "id": "swahilirsuvdc",
+          "name": "Swahili RSUVDC (BIBLIA KISWAHILI)",
+          "filename": "SwahiliRSUVDCBible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/SwahiliRSUVDCBible.xml",
+          "file_size_bytes": 4762488,
+          "testament_coverage": {
+            "old_testament": true,
+            "new_testament": true,
+            "total_books": 66
+          },
+          "metadata": {
+            "status": "The Holy Bible in Kiswahili, Revised Union Version © Bible Society of Tanzania and Bible Society of Kenya, 2013",
+            "year": null,
+            "info": "",
+            "site": "",
+            "link": "https://www.bible.com/bible/2937/GEN.1.RSUVDC"
+          }
+        },
+        {
+          "id": "swahiliscldc-10",
+          "name": "Swahili SCLDC10 (BIBLIA Yenye Vitabu vya Deuterokanoni HABARI NJEMA)",
+          "filename": "SwahiliSCLDC10Bible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/SwahiliSCLDC10Bible.xml",
+          "file_size_bytes": 4869667,
+          "testament_coverage": {
+            "old_testament": true,
+            "new_testament": true,
+            "total_books": 66
+          },
+          "metadata": {
+            "status": "Swahili Common Language DC Bible: Biblia Habari Njema kwa Watu Wote (Yenye Vitabu vya Deuterokanoni): Tafsiri ya Ushirikiano wa Makanisa (BHN): Hakimiliki © Chama cha Biblia cha Tanzania na Chama cha Biblia cha Kenya, 1995, 2001. Haki zote zimehifadhiwa",
+            "year": null,
+            "info": "",
+            "site": "",
+            "link": "https://www.bible.com/bible/2936/GEN.1.SCLDC10"
+          }
+        },
+        {
+          "id": "swahilisrb-37",
+          "name": "Swahili SRB37 (Swahili Roehl Bible 1937)",
+          "filename": "SwahiliSRB37Bible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/SwahiliSRB37Bible.xml",
+          "file_size_bytes": 5024413,
+          "testament_coverage": {
+            "old_testament": true,
+            "new_testament": true,
+            "total_books": 66
+          },
+          "metadata": {
+            "status": "Swahili Roehl Bible 1937 © Bible Society of Tanzania, 1937",
+            "year": null,
+            "info": "",
+            "site": "",
+            "link": "https://www.bible.com/bible/3049/GEN.1.SRB37"
           }
         },
         {
@@ -18818,162 +18563,6 @@
           }
         },
         {
-          "id": "swahiliswzzb-1921",
-          "name": "Swahili SWZZB1921 (New Testament in Swahili (Zanzibar) Revised Edition 1921)",
-          "filename": "SwahiliSWZZB1921Bible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/SwahiliSWZZB1921Bible.xml",
-          "file_size_bytes": 1124395,
-          "testament_coverage": {
-            "old_testament": false,
-            "new_testament": true,
-            "total_books": 27
-          },
-          "metadata": {
-            "status": "Swahili New Testament © Bible Society of Tanzania, 1921",
-            "year": null,
-            "info": "",
-            "site": "",
-            "link": "https://www.bible.com/bible/3048/MAT.3.SWZZB1921"
-          }
-        }
-      ]
-    },
-    {
-      "language": "SwahiliB",
-      "native_name": "SwahiliB",
-      "iso_code": null,
-      "translations": [
-        {
-          "id": "swahilibhntlk",
-          "name": "Swahili BHNTLK (Biblia Habari Njema: Toleo la Kujifunza)",
-          "filename": "SwahiliBHNTLKBible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/SwahiliBHNTLKBible.xml",
-          "file_size_bytes": 4970593,
-          "testament_coverage": {
-            "old_testament": true,
-            "new_testament": true,
-            "total_books": 66
-          },
-          "metadata": {
-            "status": "Copyright The Bible Society of Tanzania, 1993 The Bible Society of Kenya 1993",
-            "year": null,
-            "info": "",
-            "site": "",
-            "link": "https://www.bible.com/bible/2144/GEN.1.BHNTLK"
-          }
-        }
-      ]
-    },
-    {
-      "language": "SwahiliContemporary",
-      "native_name": "SwahiliContemporary",
-      "iso_code": null,
-      "translations": [
-        {
-          "id": "swahilicontemporary",
-          "name": "Swahili NEN (Neno: Bibilia Takatifu 2025)",
-          "filename": "SwahiliContemporaryBible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/SwahiliContemporaryBible.xml",
-          "file_size_bytes": 5012080,
-          "testament_coverage": {
-            "old_testament": true,
-            "new_testament": true,
-            "total_books": 66
-          },
-          "metadata": {
-            "status": "Neno: Biblia Takatifu™ Neno™ Hakimiliki © 1984, 1989, 2009, 2015 na Biblica, Inc",
-            "year": null,
-            "info": "",
-            "site": "",
-            "link": "https://www.bible.com/bible/1627/MAT.3.NENO"
-          }
-        }
-      ]
-    },
-    {
-      "language": "SwahiliR",
-      "native_name": "SwahiliR",
-      "iso_code": null,
-      "translations": [
-        {
-          "id": "swahilirsuvdc",
-          "name": "Swahili RSUVDC (BIBLIA KISWAHILI)",
-          "filename": "SwahiliRSUVDCBible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/SwahiliRSUVDCBible.xml",
-          "file_size_bytes": 4762488,
-          "testament_coverage": {
-            "old_testament": true,
-            "new_testament": true,
-            "total_books": 66
-          },
-          "metadata": {
-            "status": "The Holy Bible in Kiswahili, Revised Union Version © Bible Society of Tanzania and Bible Society of Kenya, 2013",
-            "year": null,
-            "info": "",
-            "site": "",
-            "link": "https://www.bible.com/bible/2937/GEN.1.RSUVDC"
-          }
-        }
-      ]
-    },
-    {
-      "language": "SwahiliSCLDC10",
-      "native_name": "SwahiliSCLDC10",
-      "iso_code": null,
-      "translations": [
-        {
-          "id": "swahiliscldc-10",
-          "name": "Swahili SCLDC10 (BIBLIA Yenye Vitabu vya Deuterokanoni HABARI NJEMA)",
-          "filename": "SwahiliSCLDC10Bible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/SwahiliSCLDC10Bible.xml",
-          "file_size_bytes": 4869667,
-          "testament_coverage": {
-            "old_testament": true,
-            "new_testament": true,
-            "total_books": 66
-          },
-          "metadata": {
-            "status": "Swahili Common Language DC Bible: Biblia Habari Njema kwa Watu Wote (Yenye Vitabu vya Deuterokanoni): Tafsiri ya Ushirikiano wa Makanisa (BHN): Hakimiliki © Chama cha Biblia cha Tanzania na Chama cha Biblia cha Kenya, 1995, 2001. Haki zote zimehifadhiwa",
-            "year": null,
-            "info": "",
-            "site": "",
-            "link": "https://www.bible.com/bible/2936/GEN.1.SCLDC10"
-          }
-        }
-      ]
-    },
-    {
-      "language": "SwahiliSRB37",
-      "native_name": "SwahiliSRB37",
-      "iso_code": null,
-      "translations": [
-        {
-          "id": "swahilisrb-37",
-          "name": "Swahili SRB37 (Swahili Roehl Bible 1937)",
-          "filename": "SwahiliSRB37Bible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/SwahiliSRB37Bible.xml",
-          "file_size_bytes": 5024413,
-          "testament_coverage": {
-            "old_testament": true,
-            "new_testament": true,
-            "total_books": 66
-          },
-          "metadata": {
-            "status": "Swahili Roehl Bible 1937 © Bible Society of Tanzania, 1937",
-            "year": null,
-            "info": "",
-            "site": "",
-            "link": "https://www.bible.com/bible/3049/GEN.1.SRB37"
-          }
-        }
-      ]
-    },
-    {
-      "language": "SwahiliSWC02",
-      "native_name": "SwahiliSWC02",
-      "iso_code": null,
-      "translations": [
-        {
           "id": "swahiliswc-02",
           "name": "Swahili SWC02 (BIBLIA ﻿Maandiko Matakatifu Kwa Watu Wote 2002)",
           "filename": "SwahiliSWC02Bible.xml",
@@ -18990,6 +18579,25 @@
             "info": "",
             "site": "",
             "link": "https://www.bible.com/bible/2921/GEN.6.SWC02"
+          }
+        },
+        {
+          "id": "swahiliswzzb-1921",
+          "name": "Swahili SWZZB1921 (New Testament in Swahili (Zanzibar) Revised Edition 1921)",
+          "filename": "SwahiliSWZZB1921Bible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/SwahiliSWZZB1921Bible.xml",
+          "file_size_bytes": 1124395,
+          "testament_coverage": {
+            "old_testament": false,
+            "new_testament": true,
+            "total_books": 27
+          },
+          "metadata": {
+            "status": "Swahili New Testament © Bible Society of Tanzania, 1921",
+            "year": null,
+            "info": "",
+            "site": "",
+            "link": "https://www.bible.com/bible/3048/MAT.3.SWZZB1921"
           }
         }
       ]
@@ -20740,58 +20348,6 @@
       "iso_code": null,
       "translations": [
         {
-          "id": "twidc",
-          "name": "Twi Bible 2017 (DC KYERƐW KRONKRON)",
-          "filename": "TwiDCBible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/TwiDCBible.xml",
-          "file_size_bytes": 4385928,
-          "testament_coverage": {
-            "old_testament": true,
-            "new_testament": true,
-            "total_books": 66
-          },
-          "metadata": {
-            "status": "Revised Akuapem Twi DC Bible © Bible Society of Ghana, 2017",
-            "year": null,
-            "info": "",
-            "site": "https://www.bible.com/bible/3439/GEN.1.ATWDB",
-            "link": ""
-          }
-        }
-      ]
-    },
-    {
-      "language": "TwiAkuapem",
-      "native_name": "TwiAkuapem",
-      "iso_code": null,
-      "translations": [
-        {
-          "id": "twiakuapem",
-          "name": "Twi Bible 2020 (Akuapem Twi Nkwa Asɛm)",
-          "filename": "TwiAkuapemBible.xml",
-          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/TwiAkuapemBible.xml",
-          "file_size_bytes": 4771378,
-          "testament_coverage": {
-            "old_testament": true,
-            "new_testament": true,
-            "total_books": 66
-          },
-          "metadata": {
-            "status": "Akuapem Twi Nkwa Asɛm™ Owurayɛ Tumi © 2000, 2020. Biblica, Inc. na wɔde ma.",
-            "year": null,
-            "info": "",
-            "site": "https://www.bible.com/bible/1631/GEN.1.AKNA",
-            "link": ""
-          }
-        }
-      ]
-    },
-    {
-      "language": "TwiAsante",
-      "native_name": "TwiAsante",
-      "iso_code": null,
-      "translations": [
-        {
           "id": "twiasante",
           "name": "Twi Bible (Asante Twi Nkwa Asɛm)",
           "filename": "TwiAsanteBible.xml",
@@ -20809,14 +20365,7 @@
             "site": "https://www.bible.com/bible/2094/GEN.1.ASNA",
             "link": ""
           }
-        }
-      ]
-    },
-    {
-      "language": "TwiKronkron",
-      "native_name": "TwiKronkron",
-      "iso_code": null,
-      "translations": [
+        },
         {
           "id": "twikronkron",
           "name": "Twi Bible (Twerɛ Kronkron)",
@@ -20835,14 +20384,7 @@
             "site": "https://www.bible.com/bible/1461/GEN.1.ASWDC",
             "link": ""
           }
-        }
-      ]
-    },
-    {
-      "language": "TwiRevised",
-      "native_name": "TwiRevised",
-      "iso_code": null,
-      "translations": [
+        },
         {
           "id": "twirevised",
           "name": "Twi Bible 2012 (New Revised Asante Twi Bible)",
@@ -20859,6 +20401,44 @@
             "year": null,
             "info": "",
             "site": "https://www.bible.com/bible/1861/GEN.1.ASW",
+            "link": ""
+          }
+        },
+        {
+          "id": "twidc",
+          "name": "Twi Bible 2017 (DC KYERƐW KRONKRON)",
+          "filename": "TwiDCBible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/TwiDCBible.xml",
+          "file_size_bytes": 4385928,
+          "testament_coverage": {
+            "old_testament": true,
+            "new_testament": true,
+            "total_books": 66
+          },
+          "metadata": {
+            "status": "Revised Akuapem Twi DC Bible © Bible Society of Ghana, 2017",
+            "year": null,
+            "info": "",
+            "site": "https://www.bible.com/bible/3439/GEN.1.ATWDB",
+            "link": ""
+          }
+        },
+        {
+          "id": "twiakuapem",
+          "name": "Twi Bible 2020 (Akuapem Twi Nkwa Asɛm)",
+          "filename": "TwiAkuapemBible.xml",
+          "download_url": "https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/TwiAkuapemBible.xml",
+          "file_size_bytes": 4771378,
+          "testament_coverage": {
+            "old_testament": true,
+            "new_testament": true,
+            "total_books": 66
+          },
+          "metadata": {
+            "status": "Akuapem Twi Nkwa Asɛm™ Owurayɛ Tumi © 2000, 2020. Biblica, Inc. na wɔde ma.",
+            "year": null,
+            "info": "",
+            "site": "https://www.bible.com/bible/1631/GEN.1.AKNA",
             "link": ""
           }
         }
@@ -22125,11 +21705,11 @@
     }
   ],
   "summary": {
-    "total_languages": 324,
+    "total_languages": 264,
     "total_translations": 1045,
     "complete_bibles": 696,
     "new_testament_only": 319,
     "old_testament_only": 10,
-    "total_size_bytes": 5273349167
+    "total_size_bytes": 5272308129
   }
 }
