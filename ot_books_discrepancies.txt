@@ -1,0 +1,83 @@
+================================================================================
+OLD TESTAMENT BOOKS DISCREPANCIES REPORT
+================================================================================
+
+Total translations with OT books: 706
+Non-standard translations: 7
+
+
+================================================================================
+27 OT BOOKS (2 translations)
+================================================================================
+
+Filename: HindiFijiBible.xml
+Language: Hindi
+Name: Hindi Fiji (Nawa Haup)
+OT Books: 27
+Total Books: 27
+Type: OT-only
+--------------------------------------------------------------------------------
+
+Filename: HungarianSIUZBible.xml
+Language: Hungarian
+Name: Hungarian Bible (SIUZ) - P. Soós István,karmelita szerzetes, Újszövetség fordítása
+OT Books: 27
+Total Books: 27
+Type: OT-only
+--------------------------------------------------------------------------------
+
+
+================================================================================
+40 OT BOOKS (1 translations)
+================================================================================
+
+Filename: LatinSistinaBible.xml
+Language: Latin
+Name: Latin - Vulgata Sistina
+OT Books: 40
+Total Books: 67
+Type: Complete Bible (estimated)
+--------------------------------------------------------------------------------
+
+
+================================================================================
+41 OT BOOKS (1 translations)
+================================================================================
+
+Filename: LatinClementina1914Bible.xml
+Language: Latin
+Name: Latin - Vulgata Clementina Hetzenauer Editore 1914
+OT Books: 41
+Total Books: 68
+Type: Complete Bible (estimated)
+--------------------------------------------------------------------------------
+
+
+================================================================================
+66 OT BOOKS (3 translations)
+================================================================================
+
+Filename: DutchSVVBible.xml
+Language: Dutch
+Name: Dutch SVV 2018 (Statenvertaling Jongbloed-editie)
+OT Books: 66
+Total Books: 66
+Type: OT-only
+--------------------------------------------------------------------------------
+
+Filename: HungarianBible.xml
+Language: Hungarian
+Name: Hungarian HUNB (Magyar Bibliatársulat új fordítású Bibliája)
+OT Books: 66
+Total Books: 66
+Type: OT-only
+--------------------------------------------------------------------------------
+
+Filename: Portuguese1969Bible.xml
+Language: Portuguese
+Name: Portuguese Bible Old Orthography
+OT Books: 66
+Total Books: 66
+Type: OT-only
+--------------------------------------------------------------------------------
+

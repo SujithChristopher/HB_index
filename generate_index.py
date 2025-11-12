@@ -184,6 +184,13 @@ def generate_bible_index(bible_dir):
         # Get file size in bytes
         file_size = os.path.getsize(filepath)
         
+        # Determine if this is a Protestant canon (66 books with both testaments)
+        is_protestant = (
+            bible_data['total_books'] == 66 and
+            bible_data['has_old_testament'] and
+            bible_data['has_new_testament']
+        )
+
         # Create translation entry
         translation_entry = {
             'id': generate_translation_id(filename),
@@ -196,6 +203,7 @@ def generate_bible_index(bible_dir):
                 'new_testament': bible_data['has_new_testament'],
                 'total_books': bible_data['total_books']
             },
+            'protestant': is_protestant,
             'metadata': {
                 'status': bible_data['status'],
                 'year': None,  # Could be extracted from info or status if needed
@@ -219,14 +227,15 @@ def generate_bible_index(bible_dir):
     complete_bibles = 0
     new_testament_only = 0
     old_testament_only = 0
+    protestant_canon = 0
     total_size_bytes = 0
-    
+
     for language, translations in sorted(languages_data.items()):
         language_info = get_language_info(language)
-        
+
         # Sort translations by name
         translations.sort(key=lambda x: x['name'])
-        
+
         # Count statistics for this language
         for trans in translations:
             total_translations += 1
@@ -238,6 +247,10 @@ def generate_bible_index(bible_dir):
                 new_testament_only += 1
             elif coverage['old_testament'] and not coverage['new_testament']:
                 old_testament_only += 1
+
+            # Count Protestant canon translations
+            if trans['protestant']:
+                protestant_canon += 1
         
         languages_list.append({
             'language': language,
@@ -255,6 +268,7 @@ def generate_bible_index(bible_dir):
             'complete_bibles': complete_bibles,
             'new_testament_only': new_testament_only,
             'old_testament_only': old_testament_only,
+            'protestant_canon': protestant_canon,
             'total_size_bytes': total_size_bytes
         }
     }
@@ -298,6 +312,7 @@ def main():
         print(f"- Complete Bibles: {index['summary']['complete_bibles']}")
         print(f"- New Testament only: {index['summary']['new_testament_only']}")
         print(f"- Old Testament only: {index['summary']['old_testament_only']}")
+        print(f"- Protestant canon (66 books): {index['summary']['protestant_canon']}")
         print(f"- Total size: {format_size(index['summary']['total_size_bytes'])}")
         
     except Exception as e:
