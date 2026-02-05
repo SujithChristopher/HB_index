@@ -58,16 +58,16 @@ for ($i = 0; $i -lt $batchCount; $i++) {
     $currentBatch = $files | Select-Object -Skip $start -First $batchSize
     
     $batchNames = $currentBatch.FullName
-    Write-Host "Uploading batch $($i + 1) of $batchCount ($($currentBatch.Count) files)..." -ForegroundColor Cyan
+    Write-Host "Uploading batch $($i + 1) of $batchCount ($($currentBatch.Count) files) in parallel..." -ForegroundColor Cyan
     
-    # Upload the batch
-    $currentBatch | ForEach-Object {
-        gh release upload $tagName $_.FullName --clobber
-    }
+    # Upload the batch in parallel
+    $currentBatch | ForEach-Object -Parallel {
+        gh release upload $using:tagName $_.FullName --clobber
+    } -ThrottleLimit 10
     
     if ($i -lt ($batchCount - 1)) {
-        Write-Host "Batch complete. Waiting 5 seconds for rate limits..." -ForegroundColor Gray
-        Start-Sleep -Seconds 5
+        Write-Host "Batch complete. Waiting 10 seconds for rate limits..." -ForegroundColor Gray
+        Start-Sleep -Seconds 10
     }
 }
 
