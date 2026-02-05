@@ -139,18 +139,35 @@ def interactive_search_and_download(index):
             if len(results) > 20:
                 print(f"... and {len(results) - 20} more results")
             
-            # Ask user to select a translation to download
+            # Ask user to select a translation and format
             try:
                 choice = input("\nEnter number to download (or Enter to search again): ").strip()
                 if choice:
                     choice_num = int(choice)
                     if 1 <= choice_num <= min(len(results), 20):
                         lang, trans = results[choice_num - 1]
-                        download_translation(
-                            trans['download_url'],
-                            trans['filename'],
-                            trans['file_size_bytes']
-                        )
+                        
+                        # Offer format choice if DB is available
+                        format_choice = '1'
+                        if 'db_url' in trans:
+                            print(f"\nAvailable formats for {trans['name']}:")
+                            print(f"  1. XML Source ({format_size(trans['file_size_bytes'])})")
+                            print(f"  2. Encrypted SQLite DB ({format_size(trans.get('db_file_size_bytes', 0))})")
+                            format_choice = input("Select format [1/2] (default 2): ").strip() or '2'
+                        
+                        if format_choice == '1':
+                            download_translation(
+                                trans['download_url'],
+                                trans['filename'],
+                                trans['file_size_bytes']
+                            )
+                        else:
+                            db_filename = trans['filename'].replace('.xml', '.db')
+                            download_translation(
+                                trans['db_url'],
+                                db_filename,
+                                trans.get('db_file_size_bytes', 0)
+                            )
                     else:
                         print("Invalid choice.")
             except ValueError:

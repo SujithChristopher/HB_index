@@ -184,6 +184,10 @@ def generate_bible_index(bible_dir):
         # Get file size in bytes
         file_size = os.path.getsize(filepath)
         
+        # Get DB size if it exists
+        db_filepath = os.path.join('database', filename.replace('.xml', '.db'))
+        db_file_size = os.path.getsize(db_filepath) if os.path.exists(db_filepath) else 0
+        
         # Determine if this is a Protestant canon (66 books with both testaments)
         is_protestant = (
             bible_data['total_books'] == 66 and
@@ -192,11 +196,13 @@ def generate_bible_index(bible_dir):
         )
 
         # Create translation entry
+        db_filename = filename.replace('.xml', '.db')
         translation_entry = {
             'id': generate_translation_id(filename),
             'name': bible_data['translation_name'] or filename.replace('Bible.xml', ''),
             'filename': filename,
             'download_url': f'https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/{filename}',
+            'db_url': f'https://github.com/SujithChristopher/HB_index/releases/download/databases/{db_filename}',
             'file_size_bytes': file_size,
             'testament_coverage': {
                 'old_testament': bible_data['has_old_testament'],
@@ -204,6 +210,8 @@ def generate_bible_index(bible_dir):
                 'total_books': bible_data['total_books']
             },
             'protestant': is_protestant,
+            'encrypted': True,
+            'db_file_size_bytes': db_file_size,
             'metadata': {
                 'status': bible_data['status'],
                 'year': None,  # Could be extracted from info or status if needed
