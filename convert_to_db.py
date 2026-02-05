@@ -1,10 +1,27 @@
 import os
-import sqlite3
+import sqlcipher3 as sqlite3
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-def convert_xml_to_db(xml_path, db_path):
+def get_encryption_key():
+    """Load the encryption key from .env file."""
+    env_path = Path(".env")
+    if not env_path.exists():
+        raise FileNotFoundError(".env file not found. Ensure ENCRYPTION_KEY is set.")
+    
+    with open(env_path, "r") as f:
+        for line in f:
+            if line.startswith("ENCRYPTION_KEY="):
+                return line.strip().split("=")[1]
+    
+    raise ValueError("ENCRYPTION_KEY not found in .env file.")
+
+def convert_xml_to_db(xml_path, db_path, encryption_key):
     print(f"Converting {xml_path} to {db_path}...")
+    
+    # Delete existing DB if it exists to ensure a fresh encrypted creation
+    if db_path.exists():
+        db_path.unlink()
     
     # Parse XML
     tree = ET.parse(xml_path)
@@ -13,9 +30,12 @@ def convert_xml_to_db(xml_path, db_path):
     translation_name = root.attrib.get('translation', 'Unknown')
     status = root.attrib.get('status', 'Unknown')
     
-    # Connect to SQLite
+    # Connect to SQLite (with SQLCipher support)
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
+    
+    # Apply encryption key
+    cursor.execute(f"PRAGMA key = '{encryption_key}'")
     
     # Create tables
     cursor.execute('''
@@ -97,6 +117,12 @@ def convert_xml_to_db(xml_path, db_path):
     print(f"Successfully converted {len(verses_to_insert)} verses.")
 
 if __name__ == "__main__":
+    try:
+        encryption_key = get_encryption_key()
+    except Exception as e:
+        print(f"Error loading encryption key: {e}")
+        exit(1)
+
     xml_dir = Path("Holy-Bible-XML-Format")
     db_dir = Path("database")
     
@@ -109,6 +135,6 @@ if __name__ == "__main__":
     for xml_file in xml_files:
         db_file = db_dir / f"{xml_file.stem}.db"
         try:
-            convert_xml_to_db(xml_file, db_file)
+            convert_xml_to_db(xml_file, db_file, encryption_key)
         except Exception as e:
             print(f"Failed to convert {xml_file}: {e}")
