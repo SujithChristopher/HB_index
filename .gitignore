@@ -84,3 +84,4 @@ tmp/
 !CLAUDE.md
 !*.py
 .claude
+database
