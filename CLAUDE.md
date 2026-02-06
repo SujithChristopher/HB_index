@@ -112,6 +112,7 @@ The `bible-translations-index.json` file should contain:
 | `validate_index.py` | Validate index integrity and provide detailed analysis |
 | `extract_languages.py` | Extract and list all languages from index |
 | `collect_book_names.py` | Manage native book names across languages |
+| `upload_to_s3.py` | Sync `database/` folder to AWS S3 bucket (tdb-bucket-stream) |
 
 ## File Paths
 - **Metadata files**: `database/metadata/*.json` (current, updated by scripts)
@@ -149,8 +150,45 @@ print(f"DB URL: {translation.get('db_url')}")
 print(f"Encrypted: {translation.get('encrypted', False)}")
 ```
 
+## Python Development Setup
+
+**Package Manager**: Always use `uv` for managing dependencies (faster and more reliable than pip)
+
+```bash
+# Install uv (if not already installed)
+curl https://astral.sh/uv/install.sh | sh
+
+# Install dependencies
+uv pip install boto3 python-dotenv
+
+# Or use requirements file
+uv pip install -r requirements.txt
+```
+
+## AWS S3 Sync Configuration
+
+The `upload_to_s3.py` script syncs the `database/` folder to S3 automatically.
+
+**Setup:**
+1. Add AWS credentials to `.env` file:
+   ```
+   ACCESSKEY_ID=your_access_key
+   SECRET_ACCESSKEY_ID=your_secret_key
+   ```
+
+2. Run sync:
+   ```bash
+   python scripts/upload_to_s3.py
+   ```
+
+**Options:**
+- `--workers N`: Number of parallel upload threads (default: 4)
+- `--prefix folder/`: S3 folder prefix (default: root)
+- `--quiet`: Suppress verbose output
+
 ## Notes
 - All Python scripts automatically resolve paths relative to project root
-- `.env` file contains `ENCRYPTION_KEY` for SQLite database encryption
+- `.env` file contains `ENCRYPTION_KEY` for SQLite database encryption and AWS credentials
 - Legacy JSON files at root remain unchanged for backward compatibility
 - Run scripts from any directory; they locate files via `__file__` resolution
+- Always use `uv` instead of `pip` for faster, more reliable dependency management
