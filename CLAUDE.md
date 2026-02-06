@@ -5,10 +5,24 @@ This project creates a comprehensive Bible app with multiple translations in dif
 
 ## Project Structure
 ```
-BibleDir/
-├── Holy-Bible-XML-Format/          # Git submodule with 1000+ Bible translations
-├── bible-translations-index.json   # Main index file (to be created)
-├── CLAUDE.md                       # This documentation
+HB_index/
+├── scripts/                        # Python utility scripts
+│   ├── generate_index.py          # Generate index from XML files
+│   ├── download_translation.py    # Download translations
+│   ├── update_index.py            # Update and maintain index
+│   ├── validate_index.py          # Validate index integrity
+│   ├── convert_to_db.py           # Convert XML to encrypted SQLite DB
+│   └── ...                        # Other utility scripts
+├── database/
+│   ├── metadata/                  # JSON metadata files (current)
+│   │   ├── bible-translations-index.json
+│   │   ├── bible-book-names.json
+│   │   └── bible-book-names-template.json
+│   └── *.db                       # Encrypted SQLite databases
+├── Holy-Bible-XML-Format/         # Git submodule (1000+ XML translations)
+├── bible-translations-index.json  # Legacy (root level, for backward compatibility)
+├── .env                           # Encryption key for databases
+├── CLAUDE.md                      # This documentation
 └── .git/                          # Git repository
 ```
 
@@ -71,16 +85,14 @@ The `bible-translations-index.json` file should contain:
 ```
 
 ## Progress Status
-- [x] Repository structure explored
-- [x] Git repository initialized
-- [x] Added Holy-Bible-XML-Format as submodule
-- [x] Analyzed sample translation files
-- [x] Designed file format and schema
-- [x] Created project documentation
-- [x] Created comprehensive translation index file
-- [x] Added individual download URLs for each translation
-- [x] Added file size information for storage planning
-- [x] Created maintenance utilities
+- [x] Repository structure explored and reorganized
+- [x] Scripts moved to `scripts/` directory
+- [x] Metadata files moved to `database/metadata/`
+- [x] Encrypted SQLite database conversion implemented
+- [x] Comprehensive translation index with metadata
+- [x] Download URLs and file size tracking
+- [x] Testament coverage analysis
+- [x] Maintenance and validation utilities
 
 ## Notes
 - XML files use UTF-8 encoding
@@ -89,34 +101,23 @@ The `bible-translations-index.json` file should contain:
 - Additional metadata in `status`, `info`, `site`, `link` attributes
 - Format choice: JSON selected for app compatibility and ease of parsing
 
-## Utility Scripts
+## Key Scripts (in `scripts/` directory)
 
-### `generate_index.py`
-Main script to create the comprehensive Bible translations index:
-- Scans all XML files in Holy-Bible-XML-Format directory
-- Extracts metadata, testament coverage, and file sizes
-- Generates bible-translations-index.json with download URLs
-- Supports periodic updates as new translations are added
+| Script | Purpose |
+|--------|---------|
+| `generate_index.py` | Parse XML files and generate index at `database/metadata/bible-translations-index.json` |
+| `convert_to_db.py` | Convert XML translations to encrypted SQLite databases |
+| `download_translation.py` | Interactive search and download interface for translations |
+| `update_index.py` | Maintenance: update submodule, regenerate index, show stats |
+| `validate_index.py` | Validate index integrity and provide detailed analysis |
+| `extract_languages.py` | Extract and list all languages from index |
+| `collect_book_names.py` | Manage native book names across languages |
 
-### `download_translation.py`
-Utility for downloading individual translations:
-- Interactive search and download interface
-- Command-line mode: `python download_translation.py <translation-id>`
-- Progress indication during downloads
-- Creates downloads/ directory for files
-
-### `update_index.py`
-Maintenance utility for keeping the index current:
-- Update git submodule with latest translations
-- Regenerate index file
-- Show current statistics
-- Search functionality
-
-### `validate_index.py`
-Validation and analysis tool:
-- Verifies index file structure and data integrity
-- Provides detailed statistics and analysis
-- Interactive language exploration
+## File Paths
+- **Metadata files**: `database/metadata/*.json` (current, updated by scripts)
+- **Legacy files**: Root level `*.json` (backward compatibility, not touched)
+- **Databases**: `database/*.db` (encrypted SQLite files)
+- **Source data**: `Holy-Bible-XML-Format/` (git submodule)
 
 ## API Integration Notes
 The index file format is designed for easy Bible app integration:
@@ -130,21 +131,26 @@ The index file format is designed for easy Bible app integration:
 ## Usage Examples
 
 ```python
-# Load the index
+# Load the index from new location
 import json
-with open('bible-translations-index.json', 'r', encoding='utf-8') as f:
+with open('database/metadata/bible-translations-index.json', 'r', encoding='utf-8') as f:
     index = json.load(f)
 
 # Find English translations
 english_translations = next(
-    (lang['translations'] for lang in index['languages'] 
+    (lang['translations'] for lang in index['languages']
      if lang['language'] == 'English'), []
 )
 
-# Download a specific translation
-import requests
-translation = english_translations[0]  # First English translation
-response = requests.get(translation['download_url'])
-with open(translation['filename'], 'wb') as f:
-    f.write(response.content)
+# Get both XML and DB URLs
+translation = english_translations[0]
+print(f"XML URL: {translation['download_url']}")
+print(f"DB URL: {translation.get('db_url')}")
+print(f"Encrypted: {translation.get('encrypted', False)}")
 ```
+
+## Notes
+- All Python scripts automatically resolve paths relative to project root
+- `.env` file contains `ENCRYPTION_KEY` for SQLite database encryption
+- Legacy JSON files at root remain unchanged for backward compatibility
+- Run scripts from any directory; they locate files via `__file__` resolution
