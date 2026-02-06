@@ -4,6 +4,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 from concurrent.futures import ProcessPoolExecutor, as_completed
 import time
+import base64
 
 def get_encryption_key():
     """Load the encryption key from .env file."""
@@ -16,7 +17,7 @@ def get_encryption_key():
     with open(env_path, "r") as f:
         for line in f:
             if line.startswith("ENCRYPTION_KEY="):
-                return line.strip().split("=")[1]
+                return line.strip().split("ENCRYPTION_KEY=")[1]
     
     raise ValueError("ENCRYPTION_KEY not found in .env file.")
 
@@ -94,6 +95,8 @@ if __name__ == "__main__":
     start_time = time.perf_counter()
     try:
         encryption_key = get_encryption_key()
+        print(encryption_key)
+        encryption_key = base64.b64decode(encryption_key).hex()
     except Exception as e:
         print(f"Error loading encryption key: {e}")
         exit(1)
