@@ -204,7 +204,7 @@ def generate_bible_index(bible_dir):
             'name': bible_data['translation_name'] or filename.replace('Bible.xml', ''),
             'filename': filename,
             'download_url': f'https://raw.githubusercontent.com/SujithChristopher/Holy-Bible-XML-Format/master/{filename}',
-            'db_url': f'https://tdb-bucket-stream.s3.amazonaws.com/{db_filename}',
+            'db_url': f'https://ts-db-stream.s3.ap-south-1.amazonaws.com/translations/{db_filename}',
             'file_size_bytes': file_size,
             'testament_coverage': {
                 'old_testament': bible_data['has_old_testament'],

@@ -86,3 +86,4 @@ database/.s3_sync_manifest.json  # Local S3 sync state file
 !*.py
 .claude
 database
+test_downloads
