@@ -185,7 +185,8 @@ def generate_bible_index(bible_dir):
         file_size = os.path.getsize(filepath)
         
         # Get DB size if it exists
-        db_filepath = os.path.join('database', filename.replace('.xml', '.db'))
+        project_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        db_filepath = os.path.join(project_dir, 'database', filename.replace('.xml', '.db'))
         db_file_size = os.path.getsize(db_filepath) if os.path.exists(db_filepath) else 0
         
         # Determine if this is a Protestant canon (66 books with both testaments)
@@ -286,8 +287,9 @@ def generate_bible_index(bible_dir):
 def main():
     """Main function to generate the Bible translations index."""
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    bible_dir = os.path.join(script_dir, 'Holy-Bible-XML-Format')
-    output_file = os.path.join(script_dir, 'bible-translations-index.json')
+    project_dir = os.path.dirname(script_dir)
+    bible_dir = os.path.join(project_dir, 'Holy-Bible-XML-Format')
+    output_file = os.path.join(project_dir, 'database', 'metadata', 'bible-translations-index.json')
     
     print("Bible Translations Index Generator")
     print("=" * 40)

@@ -2,9 +2,13 @@
 """Extract unique languages from bible-translations-index.json"""
 
 import json
+import os
 
 def extract_languages():
-    with open('bible-translations-index.json', 'r', encoding='utf-8') as f:
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    project_dir = os.path.dirname(script_dir)
+    index_file = os.path.join(project_dir, 'database', 'metadata', 'bible-translations-index.json')
+    with open(index_file, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
     languages = []

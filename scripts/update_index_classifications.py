@@ -6,8 +6,13 @@ Update bible-translations-index.json to add classification field:
 """
 
 import json
+import os
 
-def update_index_with_classifications(index_file):
+def update_index_with_classifications(index_file=None):
+    if index_file is None:
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        project_dir = os.path.dirname(script_dir)
+        index_file = os.path.join(project_dir, 'database', 'metadata', 'bible-translations-index.json')
     """Update the index file with protestant classification field."""
 
     # Load the current index

@@ -13,12 +13,14 @@ import sys
 
 def load_index():
     """Load the Bible translations index."""
-    index_file = 'bible-translations-index.json'
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    project_dir = os.path.dirname(script_dir)
+    index_file = os.path.join(project_dir, 'database', 'metadata', 'bible-translations-index.json')
     if not os.path.exists(index_file):
         print("Error: bible-translations-index.json not found!")
         print("Please run generate_index.py first.")
         return None
-    
+
     with open(index_file, 'r', encoding='utf-8') as f:
         return json.load(f)
 

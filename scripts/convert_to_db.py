@@ -7,7 +7,9 @@ import time
 
 def get_encryption_key():
     """Load the encryption key from .env file."""
-    env_path = Path(".env")
+    script_dir = Path(__file__).parent
+    project_dir = script_dir.parent
+    env_path = project_dir / ".env"
     if not env_path.exists():
         raise FileNotFoundError(".env file not found. Ensure ENCRYPTION_KEY is set.")
     
@@ -96,8 +98,10 @@ if __name__ == "__main__":
         print(f"Error loading encryption key: {e}")
         exit(1)
 
-    xml_dir = Path("Holy-Bible-XML-Format")
-    db_dir = Path("database")
+    script_dir = Path(__file__).parent
+    project_dir = script_dir.parent
+    xml_dir = project_dir / "Holy-Bible-XML-Format"
+    db_dir = project_dir / "database"
     db_dir.mkdir(exist_ok=True)
         
     xml_files = list(xml_dir.glob("*.xml"))

@@ -1,7 +1,12 @@
 import json
+import os
 from thefuzz import fuzz
 
-def find_overlapping_languages(index_file):
+def find_overlapping_languages(index_file=None):
+    if index_file is None:
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        project_dir = os.path.dirname(script_dir)
+        index_file = os.path.join(project_dir, 'database', 'metadata', 'bible-translations-index.json')
     """
     Finds potential overlapping languages in the Bible translations index.
     """
@@ -29,4 +34,4 @@ def find_overlapping_languages(index_file):
         print("No overlapping languages found.")
 
 if __name__ == '__main__':
-    find_overlapping_languages('bible-translations-index.json')
+    find_overlapping_languages()

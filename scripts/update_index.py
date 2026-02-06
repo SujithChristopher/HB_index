@@ -26,7 +26,9 @@ def regenerate_index():
     """Regenerate the Bible translations index."""
     print("Regenerating Bible translations index...")
     try:
-        result = subprocess.run(['python', 'generate_index.py'], 
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        generate_script = os.path.join(script_dir, 'generate_index.py')
+        result = subprocess.run(['python', generate_script],
                               capture_output=True, text=True, check=True)
         print("✓ Index regenerated successfully")
         print(result.stdout)
@@ -38,11 +40,13 @@ def regenerate_index():
 
 def show_stats():
     """Show current statistics from the index."""
-    index_file = 'bible-translations-index.json'
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    project_dir = os.path.dirname(script_dir)
+    index_file = os.path.join(project_dir, 'database', 'metadata', 'bible-translations-index.json')
     if not os.path.exists(index_file):
         print("Index file not found. Run regenerate_index() first.")
         return
-    
+
     with open(index_file, 'r', encoding='utf-8') as f:
         data = json.load(f)
     
@@ -61,11 +65,13 @@ def show_stats():
 
 def search_translations(query):
     """Search for translations by name or language."""
-    index_file = 'bible-translations-index.json'
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    project_dir = os.path.dirname(script_dir)
+    index_file = os.path.join(project_dir, 'database', 'metadata', 'bible-translations-index.json')
     if not os.path.exists(index_file):
         print("Index file not found.")
         return
-    
+
     with open(index_file, 'r', encoding='utf-8') as f:
         data = json.load(f)
     

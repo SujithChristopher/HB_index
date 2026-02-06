@@ -6,15 +6,25 @@ This script will be used in conjunction with web searches to populate the bible-
 
 import json
 import sys
+import os
+
+def get_project_dir():
+    """Get the project root directory."""
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    return os.path.dirname(script_dir)
 
 def load_template():
     """Load the template file"""
-    with open('bible-book-names-template.json', 'r', encoding='utf-8') as f:
+    project_dir = get_project_dir()
+    template_file = os.path.join(project_dir, 'database', 'metadata', 'bible-book-names-template.json')
+    with open(template_file, 'r', encoding='utf-8') as f:
         return json.load(f)
 
 def load_languages():
     """Load languages from the translations index"""
-    with open('bible-translations-index.json', 'r', encoding='utf-8') as f:
+    project_dir = get_project_dir()
+    index_file = os.path.join(project_dir, 'database', 'metadata', 'bible-translations-index.json')
+    with open(index_file, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
     languages = []
@@ -34,10 +44,12 @@ def add_language_books(language_code, language_name, native_name, book_names_dic
     book_names_dict should be a dictionary with book numbers (1-66) as keys and native names as values.
     """
     data = load_template()
+    project_dir = get_project_dir()
+    book_names_file = os.path.join(project_dir, 'database', 'metadata', 'bible-book-names.json')
 
     # Load existing data if available
     try:
-        with open('bible-book-names.json', 'r', encoding='utf-8') as f:
+        with open(book_names_file, 'r', encoding='utf-8') as f:
             data = json.load(f)
     except FileNotFoundError:
         pass
@@ -66,7 +78,7 @@ def add_language_books(language_code, language_name, native_name, book_names_dic
         }
 
     # Save updated data
-    with open('bible-book-names.json', 'w', encoding='utf-8') as f:
+    with open(book_names_file, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
     print(f"Added {len(book_names_dict)} books for {language_name} ({native_name})")

@@ -142,7 +142,8 @@ def show_language_details(index, language_name):
 def main():
     """Main function to validate and analyze the Bible translations index."""
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    index_file = os.path.join(script_dir, 'bible-translations-index.json')
+    project_dir = os.path.dirname(script_dir)
+    index_file = os.path.join(project_dir, 'database', 'metadata', 'bible-translations-index.json')
     
     if not os.path.exists(index_file):
         print(f"Index file not found: {index_file}")
