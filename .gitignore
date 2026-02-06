@@ -78,6 +78,7 @@ tmp/
 *.log
 *.bak
 *.tmp
+database/.s3_sync_manifest.json  # Local S3 sync state file
 
 # Keep these important files
 !bible-translations-index.json

@@ -21,12 +21,167 @@ import os
 import sys
 import json
 import argparse
+import hashlib
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from datetime import datetime
+from datetime import datetime, timezone
 from dotenv import load_dotenv
 import boto3
 from botocore.exceptions import ClientError, NoCredentialsError
+
+
+class SyncManifest:
+    """Track uploaded files with checksums in local manifest."""
+
+    def __init__(self, manifest_path):
+        self.manifest_path = manifest_path
+        self.manifest = self._load_manifest()
+
+    def _load_manifest(self):
+        """Load existing manifest or create new one."""
+        if os.path.exists(self.manifest_path):
+            with open(self.manifest_path, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        return {'version': '1.0', 'last_sync': None, 'files': {}}
+
+    def get_file_hash(self, file_path):
+        """Calculate MD5 hash efficiently."""
+        md5 = hashlib.md5()
+        with open(file_path, 'rb') as f:
+            while chunk := f.read(8388608):  # 8MB chunks
+                md5.update(chunk)
+        return md5.hexdigest()
+
+    def needs_upload(self, local_path, s3_key):
+        """Check if file needs upload based on manifest."""
+        file_size = os.path.getsize(local_path)
+
+        if s3_key not in self.manifest['files']:
+            return True  # New file
+
+        stored = self.manifest['files'][s3_key]
+
+        # Quick size check first
+        if stored.get('size') != file_size:
+            return True
+
+        # Then hash check
+        file_hash = self.get_file_hash(local_path)
+        if stored.get('md5') != file_hash:
+            return True
+
+        return False
+
+    def record_upload(self, local_path, s3_key):
+        """Record successful upload in manifest."""
+        self.manifest['files'][s3_key] = {
+            'local_path': str(local_path),
+            'size': os.path.getsize(local_path),
+            'md5': self.get_file_hash(local_path),
+            'uploaded_at': datetime.now().isoformat()
+        }
+
+    def save(self):
+        """Save manifest to disk."""
+        self.manifest['last_sync'] = datetime.now().isoformat()
+        os.makedirs(os.path.dirname(self.manifest_path), exist_ok=True)
+        with open(self.manifest_path, 'w', encoding='utf-8') as f:
+            json.dump(self.manifest, f, indent=2)
+
+
+class HybridS3Syncer:
+    """Combines manifest, batch listing, and smart comparison."""
+
+    def __init__(self, s3_client, bucket, manifest):
+        self.s3_client = s3_client
+        self.bucket = bucket
+        self.manifest = manifest
+
+    def analyze_sync(self, file_list, s3_prefix=''):
+        """
+        Perform hybrid sync analysis.
+        Returns: (files_to_upload, stats_dict)
+        """
+        stats = {
+            'total': len(file_list),
+            'manifest_skips': 0,
+            's3_matches': 0,
+            'needs_upload': 0
+        }
+
+        # Phase 1: Quick manifest check
+        candidates = []
+        for file_info in file_list:
+            if self.manifest.needs_upload(file_info['local_path'], file_info['s3_key']):
+                candidates.append(file_info)
+            else:
+                stats['manifest_skips'] += 1
+
+        if not candidates:
+            return [], stats
+
+        # Phase 2: Batch verify against S3
+        s3_inventory = self._batch_list_s3(s3_prefix)
+
+        files_to_upload = []
+        for file_info in candidates:
+            if self._needs_upload_hybrid(file_info, s3_inventory):
+                files_to_upload.append(file_info)
+                stats['needs_upload'] += 1
+            else:
+                stats['s3_matches'] += 1
+
+        return files_to_upload, stats
+
+    def _batch_list_s3(self, prefix):
+        """Get S3 inventory in one batch."""
+        inventory = {}
+        paginator = self.s3_client.get_paginator('list_objects_v2')
+
+        for page in paginator.paginate(Bucket=self.bucket, Prefix=prefix):
+            for obj in page.get('Contents', []):
+                inventory[obj['Key']] = {
+                    'size': obj['Size'],
+                    'modified': obj['LastModified'],
+                    'etag': obj['ETag'].strip('"')
+                }
+
+        return inventory
+
+    def _needs_upload_hybrid(self, file_info, s3_inventory):
+        """Smart comparison: size + timestamp + optional MD5."""
+        s3_key = file_info['s3_key']
+        local_path = file_info['local_path']
+
+        # File doesn't exist in S3
+        if s3_key not in s3_inventory:
+            return True
+
+        s3_obj = s3_inventory[s3_key]
+        local_size = os.path.getsize(local_path)
+
+        # Different size = definitely upload
+        if local_size != s3_obj['size']:
+            return True
+
+        # Check timestamp
+        local_mtime = os.path.getmtime(local_path)
+        local_modified = datetime.fromtimestamp(local_mtime, timezone.utc)
+
+        # If local is older or same, skip
+        if local_modified <= s3_obj['modified']:
+            # Update manifest since we confirmed it matches S3
+            self.manifest.record_upload(local_path, s3_key)
+            return False
+
+        # Same size, local newer: verify with MD5
+        local_md5 = self.manifest.get_file_hash(local_path)
+        if local_md5 == s3_obj['etag']:
+            # Content matches despite newer timestamp
+            self.manifest.record_upload(local_path, s3_key)
+            return False
+
+        return True
 
 
 class S3Uploader:
@@ -37,7 +192,7 @@ class S3Uploader:
     # File extensions to exclude
     EXCLUDE_EXTENSIONS = {'.pyc', '.pyo', '.pyd', '.so', '.o', '.a'}
 
-    def __init__(self, bucket_name, region='us-east-1', max_workers=4, verbose=True):
+    def __init__(self, bucket_name, region='us-east-1', max_workers=4, verbose=True, incremental=True):
         """Initialize S3 uploader."""
         self.bucket_name = bucket_name
         self.region = region
@@ -49,12 +204,28 @@ class S3Uploader:
         self.total_bytes_uploaded = 0
         self.file_list = []
 
+        # Initialize incremental sync
+        self.incremental = incremental
+        self.manifest = None
+        self.syncer = None
+
         try:
             # Load credentials from .env if available
             self._load_credentials()
             self.s3_client = boto3.client('s3', region_name=region)
             self._verify_bucket_exists()
             self.log("✓ S3 client initialized successfully")
+
+            # Initialize incremental sync if enabled
+            if incremental:
+                script_dir = os.path.dirname(os.path.abspath(__file__))
+                project_dir = os.path.dirname(script_dir)
+                manifest_path = os.path.join(project_dir, 'database', '.s3_sync_manifest.json')
+
+                self.manifest = SyncManifest(manifest_path)
+                self.syncer = HybridS3Syncer(self.s3_client, bucket_name, self.manifest)
+                self.log("✓ Incremental sync enabled")
+
         except NoCredentialsError:
             self.error("AWS credentials not found. Configure with: aws configure or set up .env file")
             raise
@@ -169,6 +340,10 @@ class S3Uploader:
             self.uploaded_files += 1
             self.total_bytes_uploaded += file_size
 
+            # Update manifest for incremental sync
+            if self.manifest:
+                self.manifest.record_upload(local_path, s3_key)
+
             if self.verbose:
                 self.log(f"  ✓ {s3_key} ({self.format_size(file_size)})")
 
@@ -202,7 +377,27 @@ class S3Uploader:
             self.log("No files to upload!")
             return
 
+        # Perform incremental sync analysis
+        if self.syncer:
+            self.log(f"\n{'='*60}")
+            self.log("Analyzing changes (incremental sync)...")
+            self.log(f"{'='*60}")
+
+            files_to_upload, stats = self.syncer.analyze_sync(self.file_list, s3_prefix)
+
+            self.log(f"✓ Total files scanned: {stats['total']}")
+            self.log(f"✓ Unchanged (manifest): {stats['manifest_skips']}")
+            self.log(f"✓ Unchanged (S3 verified): {stats['s3_matches']}")
+            self.log(f"✓ Need upload: {stats['needs_upload']}")
+
+            self.file_list = files_to_upload
+
+            if not self.file_list:
+                self.log("\n✅ All files are up to date!")
+                return
+
         # Upload files in parallel
+        collected = len(self.file_list)
         self.log(f"\nUploading {collected} files with {self.max_workers} parallel workers...")
 
         with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
@@ -239,6 +434,11 @@ class S3Uploader:
             self.log(f"⚡ Speed:     {self.format_size(speed)}/s")
 
         self.log("=" * 60)
+
+        # Save manifest
+        if self.manifest:
+            self.manifest.save()
+            self.log("\n✓ Sync manifest updated")
 
         if self.failed_files > 0:
             self.log(f"\n⚠ {self.failed_files} file(s) failed to upload. Review errors above.", level='warning')
@@ -338,6 +538,18 @@ Examples:
         action='store_true',
         help='Suppress verbose output'
     )
+    parser.add_argument(
+        '--incremental',
+        action='store_true',
+        default=True,
+        help='Use incremental sync (default: True)'
+    )
+    parser.add_argument(
+        '--no-incremental',
+        dest='incremental',
+        action='store_false',
+        help='Force full upload without change detection'
+    )
 
     args = parser.parse_args()
 
@@ -355,7 +567,8 @@ Examples:
             bucket_name=args.bucket,
             region=args.region,
             max_workers=args.workers,
-            verbose=not args.quiet
+            verbose=not args.quiet,
+            incremental=args.incremental
         )
 
         uploader.upload_directory(local_path, args.prefix)

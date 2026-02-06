@@ -15,6 +15,7 @@ import re
 def normalize_language_name(base_name):
     """Normalize language name to group related languages."""
     # List of base languages to check against
+    
     base_languages = [
         'English', 'Chinese', 'Arabic', 'Spanish', 'French', 'German', 'Portuguese',
         'Russian', 'Korean', 'Japanese', 'Hindi', 'Tamil', 'Telugu', 'Bengali',
