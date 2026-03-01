@@ -25,8 +25,13 @@ def convert_xml_to_db(xml_path, db_path, encryption_key):
     # Parse XML first (outside of connection for better error isolation)
     tree = ET.parse(xml_path)
     root = tree.getroot()
-    
+
     translation_name = root.attrib.get('translation', 'Unknown')
+    # Derive translation_id from filename, removing "bible" suffix if present
+    # e.g., "AcehBible.xml" -> "aceh", "KJV.xml" -> "kjv"
+    translation_id = xml_path.stem.lower()
+    if translation_id.endswith('bible'):
+        translation_id = translation_id[:-5]  # Remove "bible" suffix
     status = root.attrib.get('status', 'Unknown')
     
     # Delete existing DB if it exists
@@ -36,54 +41,134 @@ def convert_xml_to_db(xml_path, db_path, encryption_key):
     # Connect and Apply encryption
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
-    cursor.execute(f"PRAGMA key = '{encryption_key}'")
-    
-    # Create tables
-    cursor.execute('CREATE TABLE IF NOT EXISTS metadata (key TEXT PRIMARY KEY, value TEXT)')
+    # Use hex key format with x'...' syntax for SQLCipher
+    cursor.execute(f"PRAGMA key = \"x'{encryption_key}'\"")
+
+    # Set SQLCipher 4.x compatibility settings (must match Rust side)
+    cursor.execute("PRAGMA cipher_page_size = 4096")
+    cursor.execute("PRAGMA kdf_iter = 256000")
+    cursor.execute("PRAGMA cipher_hmac_algorithm = HMAC_SHA512")
+    cursor.execute("PRAGMA cipher_kdf_algorithm = PBKDF2_HMAC_SHA512")
+
+    # Create tables (matching Rust schema exactly)
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS verses (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            testament TEXT,
-            book_number INTEGER,
-            chapter_number INTEGER,
-            verse_number INTEGER,
-            text TEXT
+        CREATE TABLE IF NOT EXISTS translations (
+            id TEXT PRIMARY KEY,
+            name TEXT NOT NULL,
+            abbreviation TEXT NOT NULL,
+            language TEXT NOT NULL,
+            language_name TEXT,
+            description TEXT,
+            download_url TEXT,
+            legal_notice TEXT
         )
     ''')
+
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS books (
+            translation_id TEXT NOT NULL,
+            id INTEGER NOT NULL,
+            name TEXT NOT NULL,
+            abbreviation TEXT NOT NULL,
+            chapter_count INTEGER NOT NULL,
+            testament TEXT NOT NULL,
+            PRIMARY KEY (translation_id, id),
+            FOREIGN KEY (translation_id) REFERENCES translations(id) ON DELETE CASCADE
+        )
+    ''')
+
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS verses (
+            translation_id TEXT NOT NULL,
+            book_id INTEGER NOT NULL,
+            chapter INTEGER NOT NULL,
+            verse INTEGER NOT NULL,
+            text TEXT NOT NULL,
+            PRIMARY KEY (translation_id, book_id, chapter, verse),
+            FOREIGN KEY (translation_id, book_id) REFERENCES books(translation_id, id) ON DELETE CASCADE
+        )
+    ''')
+
+    # Insert translation metadata
+    cursor.execute('''
+        INSERT OR REPLACE INTO translations (id, name, abbreviation, language, description)
+        VALUES (?, ?, ?, ?, ?)
+    ''', (translation_id, translation_name, translation_id.upper(), 'en', status))
     
-    # Insert metadata
-    cursor.execute('INSERT INTO metadata (key, value) VALUES (?, ?)', ('translation', translation_name))
-    cursor.execute('INSERT INTO metadata (key, value) VALUES (?, ?)', ('status', status))
-    
-    # Process verses
+    # Process verses and track books
     verses_to_insert = []
+    books_map = {}  # book_id -> {name, testament, max_chapter}
+
     testaments = root.findall('testament')
     if testaments:
         for testament in testaments:
             testament_name = testament.attrib.get('name')
             for book in testament.findall('book'):
                 book_num = int(book.attrib.get('number'))
+                book_name = book.attrib.get('name', f'Book {book_num}')
+
+                # Track book info
+                if book_num not in books_map:
+                    books_map[book_num] = {
+                        'name': book_name,
+                        'testament': testament_name,
+                        'max_chapter': 0
+                    }
+
                 for chapter in book.findall('chapter'):
                     chapter_num = int(chapter.attrib.get('number'))
+                    books_map[book_num]['max_chapter'] = max(books_map[book_num]['max_chapter'], chapter_num)
+
                     for verse in chapter.findall('verse'):
                         verses_to_insert.append((
-                            testament_name, book_num, chapter_num, 
+                            translation_id, book_num, chapter_num,
                             int(verse.attrib.get('number')), verse.text or ""
                         ))
     else:
         for book in root.findall('book'):
             book_num = int(book.attrib.get('number'))
-            testament_name = "Old" if book_num <= 39 else "New"
+            book_name = book.attrib.get('name', f'Book {book_num}')
+            testament_name = "Old Testament" if book_num <= 39 else "New Testament"
+
+            # Track book info
+            if book_num not in books_map:
+                books_map[book_num] = {
+                    'name': book_name,
+                    'testament': testament_name,
+                    'max_chapter': 0
+                }
+
             for chapter in book.findall('chapter'):
                 chapter_num = int(chapter.attrib.get('number'))
+                books_map[book_num]['max_chapter'] = max(books_map[book_num]['max_chapter'], chapter_num)
+
                 for verse in chapter.findall('verse'):
                     verses_to_insert.append((
-                        testament_name, book_num, chapter_num, 
+                        translation_id, book_num, chapter_num,
                         int(verse.attrib.get('number')), verse.text or ""
                     ))
-    
+
+    # Insert books
+    books_to_insert = [
+        (
+            translation_id,
+            book_id,
+            info['name'],
+            info['name'][:3].upper(),  # Simple abbreviation
+            info['max_chapter'],
+            info['testament']
+        )
+        for book_id, info in books_map.items()
+    ]
+
     cursor.executemany('''
-        INSERT INTO verses (testament, book_number, chapter_number, verse_number, text)
+        INSERT OR REPLACE INTO books (translation_id, id, name, abbreviation, chapter_count, testament)
+        VALUES (?, ?, ?, ?, ?, ?)
+    ''', books_to_insert)
+
+    # Insert verses with translation_id
+    cursor.executemany('''
+        INSERT OR REPLACE INTO verses (translation_id, book_id, chapter, verse, text)
         VALUES (?, ?, ?, ?, ?)
     ''', verses_to_insert)
     
@@ -104,7 +189,7 @@ if __name__ == "__main__":
     script_dir = Path(__file__).parent
     project_dir = script_dir.parent
     xml_dir = project_dir / "Holy-Bible-XML-Format"
-    db_dir = project_dir / "database"
+    db_dir = project_dir / "database/translations"
     db_dir.mkdir(exist_ok=True)
         
     xml_files = list(xml_dir.glob("*.xml"))
