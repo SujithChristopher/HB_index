@@ -19,7 +19,7 @@ from pathlib import Path
 script_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, script_dir)
 
-from upload_to_s3 import SyncManifest
+from pycode.HB_index.scripts.upload_to_s3 import SyncManifest
 
 
 def test_sync_manifest():
