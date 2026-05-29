@@ -274,10 +274,10 @@ python scripts/upload_to_s3.py
 
 ## Testing
 
-Comprehensive unit tests are provided in `scripts/test_incremental_sync.py`:
+Comprehensive unit tests are provided in `tests/test_incremental_sync.py`:
 
 ```bash
-python scripts/test_incremental_sync.py
+python tests/test_incremental_sync.py
 ```
 
 Tests cover:

@@ -18,7 +18,7 @@
 - **Backward Compatible**: Yes, existing code works unchanged
 
 ### 2. Comprehensive Test Suite
-**File**: `scripts/test_incremental_sync.py`
+**File**: `tests/test_incremental_sync.py`
 - **Test Coverage**: 3 test suites, 10+ test cases
 - **Result**: 100% pass rate ✅
 - **Tests covered**:
@@ -195,7 +195,7 @@ Shows all options including new incremental sync flags.
 ### Unit Test Suite
 
 ```bash
-python scripts/test_incremental_sync.py
+python tests/test_incremental_sync.py
 ```
 
 **Result**: ✅ All tests pass
@@ -253,7 +253,7 @@ python -c "from scripts.upload_to_s3 import SyncManifest, HybridS3Syncer, S3Uplo
 ### Created
 1. `INCREMENTAL_SYNC.md` (Comprehensive documentation)
 2. `SYNC_QUICK_START.md` (Quick reference)
-3. `scripts/test_incremental_sync.py` (Unit tests)
+3. `tests/test_incremental_sync.py` (Unit tests)
 4. `IMPLEMENTATION_SUMMARY.md` (This file)
 
 ---
@@ -331,7 +331,7 @@ ls -la database/.s3_sync_manifest.json
 
 ```bash
 # Run tests
-python scripts/test_incremental_sync.py
+python tests/test_incremental_sync.py
 
 # Do a sync
 python scripts/upload_to_s3.py
@@ -375,12 +375,12 @@ python scripts/upload_to_s3.py --no-incremental
 **For Users**:
 1. Try the next sync - enjoy the speed! 🚀
 2. Optional: Read `SYNC_QUICK_START.md` for reference
-3. Optional: Run `python scripts/test_incremental_sync.py` to verify
+3. Optional: Run `python tests/test_incremental_sync.py` to verify
 
 **For Developers**:
 1. Read `INCREMENTAL_SYNC.md` for full technical details
 2. Review the three classes in `scripts/upload_to_s3.py`
-3. Study `scripts/test_incremental_sync.py` to understand behavior
+3. Study `tests/test_incremental_sync.py` to understand behavior
 4. Run tests after any modifications
 
 ---

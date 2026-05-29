@@ -9,9 +9,9 @@ Requirements:
     uv pip install boto3 python-dotenv
 
 Usage:
-    python scripts/test_download.py
-    python scripts/test_download.py --translation english-kjv
-    python scripts/test_download.py --count 3
+    python tests/test_download.py
+    python tests/test_download.py --translation english-kjv
+    python tests/test_download.py --count 3
 
 Note:
     - Uses AWS credentials from .env file to download DB files from S3
@@ -23,10 +23,22 @@ import sys
 import json
 import argparse
 import urllib.request
-from pathlib import Path
-from dotenv import load_dotenv
-import boto3
-from botocore.exceptions import ClientError, NoCredentialsError
+try:
+    from dotenv import load_dotenv
+except ImportError:
+    load_dotenv = None
+
+try:
+    import boto3
+    from botocore.exceptions import ClientError, NoCredentialsError
+except ImportError:
+    boto3 = None
+
+    class ClientError(Exception):
+        pass
+
+    class NoCredentialsError(Exception):
+        pass
 
 
 def resolve_project_root():
@@ -65,7 +77,7 @@ def load_aws_credentials():
     project_root = resolve_project_root()
     env_file = os.path.join(project_root, '.env')
 
-    if os.path.exists(env_file):
+    if os.path.exists(env_file) and load_dotenv is not None:
         load_dotenv(env_file, override=True)
         print("✓ Loaded credentials from .env file")
 
@@ -80,6 +92,9 @@ def load_aws_credentials():
         else:
             print("⚠ .env file found but credentials missing")
             return False
+    elif os.path.exists(env_file):
+        print("⚠ .env file found but python-dotenv is not installed")
+        return False
     else:
         print("⚠ .env file not found, will try AWS CLI credentials")
         return False
@@ -87,6 +102,10 @@ def load_aws_credentials():
 
 def init_s3_client(region='ap-south-1'):
     """Initialize S3 client with credentials."""
+    if boto3 is None:
+        print("❌ boto3 is not installed. Install dependencies with: pip install boto3 python-dotenv")
+        return None
+
     try:
         load_aws_credentials()
         s3_client = boto3.client('s3', region_name=region)
@@ -306,16 +325,16 @@ def main():
         epilog="""
 Examples:
   # Download first 2 translations (DB only)
-  python scripts/test_download.py
+  python tests/test_download.py
 
   # Download specific translation
-  python scripts/test_download.py --translation english-kjv
+  python tests/test_download.py --translation english-kjv
 
   # Download 5 translations
-  python scripts/test_download.py --count 5
+  python tests/test_download.py --count 5
 
   # Download both DB and XML files
-  python scripts/test_download.py --xml --count 2
+  python tests/test_download.py --xml --count 2
         """
     )
 

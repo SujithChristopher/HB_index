@@ -15,11 +15,12 @@ import json
 import tempfile
 from pathlib import Path
 
-# Add parent directory to path for imports
+# Add scripts directory to path for imports
 script_dir = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, script_dir)
+project_dir = os.path.dirname(script_dir)
+sys.path.insert(0, os.path.join(project_dir, "scripts"))
 
-from pycode.HB_index.scripts.upload_to_s3 import SyncManifest
+from upload_to_s3 import SyncManifest
 
 
 def test_sync_manifest():

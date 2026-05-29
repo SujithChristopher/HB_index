@@ -148,11 +148,11 @@ Standard library modules:
 
 **Quick reference**: This file
 **Full documentation**: `INCREMENTAL_SYNC.md`
-**Unit tests**: `scripts/test_incremental_sync.py`
+**Unit tests**: `tests/test_incremental_sync.py`
 
 Run tests to verify everything works:
 ```bash
-python scripts/test_incremental_sync.py
+python tests/test_incremental_sync.py
 ```
 
 ## Migration
@@ -165,7 +165,7 @@ If you've used the old version before:
 ## Need Help?
 
 1. **Check**: `INCREMENTAL_SYNC.md` for detailed documentation
-2. **Run tests**: `python scripts/test_incremental_sync.py`
+2. **Run tests**: `python tests/test_incremental_sync.py`
 3. **View help**: `python scripts/upload_to_s3.py --help`
 4. **Force sync**: `python scripts/upload_to_s3.py --no-incremental`
 

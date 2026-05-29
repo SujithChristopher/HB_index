@@ -25,9 +25,22 @@ import hashlib
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
-from dotenv import load_dotenv
-import boto3
-from botocore.exceptions import ClientError, NoCredentialsError
+try:
+    from dotenv import load_dotenv
+except ImportError:
+    load_dotenv = None
+
+try:
+    import boto3
+    from botocore.exceptions import ClientError, NoCredentialsError
+except ImportError:
+    boto3 = None
+
+    class ClientError(Exception):
+        pass
+
+    class NoCredentialsError(Exception):
+        pass
 
 
 class SyncManifest:
@@ -194,6 +207,12 @@ class S3Uploader:
 
     def __init__(self, bucket_name, region='us-east-1', max_workers=4, verbose=True, incremental=True):
         """Initialize S3 uploader."""
+        if boto3 is None:
+            raise RuntimeError(
+                "boto3 is required for S3 uploads. Install dependencies with: "
+                "pip install boto3 python-dotenv"
+            )
+
         self.bucket_name = bucket_name
         self.region = region
         self.max_workers = max_workers
@@ -240,7 +259,7 @@ class S3Uploader:
         project_dir = os.path.dirname(script_dir)
         env_file = os.path.join(project_dir, '.env')
 
-        if os.path.exists(env_file):
+        if os.path.exists(env_file) and load_dotenv is not None:
             load_dotenv(env_file, override=True)
             self.log(f"✓ Loaded credentials from .env file")
 
@@ -254,6 +273,11 @@ class S3Uploader:
                 self.log("✓ AWS credentials loaded from .env")
             else:
                 self.log("⚠ .env file found but credentials missing (ACCESSKEY_ID/SECRET_ACCESSKEY_ID)", level='warning')
+        elif os.path.exists(env_file):
+            self.log(
+                "⚠ .env file found but python-dotenv is not installed; using process/AWS CLI credentials",
+                level='warning'
+            )
         else:
             self.log("ℹ .env file not found, using AWS CLI credentials")
 

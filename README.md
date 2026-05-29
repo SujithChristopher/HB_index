@@ -13,24 +13,41 @@ A comprehensive Bible translation index for Bible apps, providing access to 1000
 ## Quick Start
 
 ```bash
-# Generate the index
-python generate_index.py
+# Common entrypoint
+python scripts/hb_index.py --help
 
-# Download a specific translation
-python download_translation.py <translation-id>
+# Convert XML to encrypted DBs, generate metadata, and upload database/
+python scripts/hb_index.py build
 
-# Update with latest translations
-python update_index.py
+# Generate the index only
+python scripts/hb_index.py index
 
 # Validate index file
-python validate_index.py
+python scripts/hb_index.py validate
+
+# Download a specific translation
+python scripts/hb_index.py download <translation-id>
+
+# Verify sample S3/GitHub downloads
+python scripts/hb_index.py test-download --count 2
 ```
 
 ## Structure
 
 - `bible-translations-index.json` - Main index file with all translation metadata
 - `Holy-Bible-XML-Format/` - Git submodule containing XML Bible files
-- Python utilities for index generation and maintenance
+- `database/` - generated encrypted DBs and metadata used for release uploads
+- `scripts/` - workflow and maintenance scripts
+- `tests/` - executable checks and analysis scripts
+
+### Script Groups
+
+- Release pipeline: `scripts/build_and_upload.py`, routed by `scripts/hb_index.py build`
+- Upload/download: `scripts/upload_to_s3.py`, `scripts/download_translation.py`
+- Validation/checks: `scripts/validate_index.py`, `tests/test_download.py`,
+  `tests/test_incremental_sync.py`
+- Metadata maintenance: `scripts/generate_index.py`, `scripts/update_index.py`,
+  `scripts/update_index_classifications.py`, book-name helper scripts
 
 ## Index Format
 
