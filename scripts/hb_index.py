@@ -57,6 +57,15 @@ def main() -> int:
     add_upload_args(build)
 
     subparsers.add_parser("convert", help="Convert XML files to SQLCipher DB files.")
+
+    usx_convert = subparsers.add_parser(
+        "convert-usx",
+        help="Convert one DBL/USX bundle to a SQLCipher DB file.",
+    )
+    usx_convert.add_argument("bundle_dir", nargs="?")
+    usx_convert.add_argument("--output")
+    usx_convert.add_argument("--id")
+    usx_convert.add_argument("--plain", action="store_true")
     subparsers.add_parser("index", help="Generate bible-translations-index.json.")
     subparsers.add_parser("validate", help="Validate and inspect generated index metadata.")
 
@@ -92,6 +101,18 @@ def main() -> int:
 
     if args.command == "convert":
         return run([sys.executable, str(SCRIPT_DIR / "convert_to_db.py")])
+
+    if args.command == "convert-usx":
+        command = [sys.executable, str(SCRIPT_DIR / "convert_usx_to_db.py")]
+        if args.bundle_dir:
+            command.append(args.bundle_dir)
+        if args.output:
+            command.extend(["--output", args.output])
+        if args.id:
+            command.extend(["--id", args.id])
+        if args.plain:
+            command.append("--plain")
+        return run(command)
 
     if args.command == "index":
         return run([sys.executable, str(SCRIPT_DIR / "generate_index.py")])
